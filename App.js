@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Platform, StyleSheet, Text, View,Button } from "react-native";
+import { Platform, StyleSheet, Text, View, Button } from "react-native";
 
 import MqttService from "./src/core/services/MqttService";
 
@@ -22,24 +22,34 @@ type Props = {};
 
 export default class App extends Component<Props> {
 
+  PAHO = "MqttService";
+  MQTTJS = "mqtt.js"
+
   state = {
 
     isConnected: false,
 
     message: "",
-    topic:"ssc/sensor/21/porta"
+    topic: "ssc/sensor/21/porta",
+    lib: this.PAHO,
 
   };
 
   componentDidMount() {
 
-    MqttService.connectClient(
+    if (this.state.lib === this.PAHO) {
 
-      this.mqttSuccessHandler,
+      MqttService.connectClient(
 
-      this.mqttConnectionLostHandler
+        this.mqttSuccessHandler,
 
-    );
+        this.mqttConnectionLostHandler
+
+      );
+    }
+    if (this.state.lib == this.MQTTJS) {
+      console.log("mqtt.js")
+    }
 
   }
 
@@ -85,7 +95,7 @@ export default class App extends Component<Props> {
 
   render() {
 
-    const { isConnected, message,topic } = this.state;
+    const { isConnected, message, topic } = this.state;
 
     return (
 
