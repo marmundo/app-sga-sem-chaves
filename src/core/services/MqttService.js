@@ -6,155 +6,164 @@ init();
 
 class MqttService {
 
-static instance=null;
+    static instance = null;
 
-static getInstance() {
+    static getInstance() {
 
-if (!MqttService.instance) {
+        if (!MqttService.instance) {
 
-MqttService.instance=new MqttService();
+            MqttService.instance = new MqttService();
 
-}
+        }
 
-return MqttService.instance;
+        return MqttService.instance;
 
-}
+    }
 
-constructor() {
+    constructor() {
 
-const clientId='mdm';
+        const clientId = 'mdm';
+        let conf_mqtt = {
+            mosquitto:{
+                url: "test.mosquitto.org",
+                port: 8080
+            },
+            localhost:{
+                url: "localhost",
+                port: 9001
+            },
+        }
+        
 
-// this.client=new Paho.MQTT.Client('ws://iot.eclipse.org:80/ws', clientId);
-// this.client=new Paho.MQTT.Client('mqtt.eclipse.org',1883, clientId);
-this.client=new Paho.MQTT.Client("test.mosquitto.org",8080, "myClientId" + new Date().getTime())
+        this.client = new Paho.MQTT.Client(conf_mqtt["localhost"].url, conf_mqtt["localhost"].port, clientId)
 
-this.client.onMessageArrived=this.onMessageArrived;
+        this.client.onMessageArrived = this.onMessageArrived;
 
-this.callbacks= {};
+        this.callbacks = {};
 
-this.onSuccessHandler=undefined;
+        this.onSuccessHandler = undefined;
 
-this.onConnectionLostHandler=undefined;
+        this.onConnectionLostHandler = undefined;
 
-this.isConnected=false;
+        this.isConnected = false;
 
-}
+    }
 
-connectClient= (onSuccessHandler, onConnectionLostHandler) => {
+    connectClient = (onSuccessHandler, onConnectionLostHandler) => {
 
-this.onSuccessHandler=onSuccessHandler;
+        this.onSuccessHandler = onSuccessHandler;
 
-this.onConnectionLostHandler=onConnectionLostHandler;
+        this.onConnectionLostHandler = onConnectionLostHandler;
 
-this.client.onConnectionLost= () => {
+        this.client.onConnectionLost = () => {
 
-this.isConnected=false;
+            this.isConnected = false;
 
-onConnectionLostHandler();
+            onConnectionLostHandler();
 
-};
+        };
 
-this.client.connect({
+        this.client.connect({
 
-timeout:10,
+            timeout: 10,
 
-onSuccess: () => {
+            onSuccess: () => {
 
-this.isConnected=true;
+                this.isConnected = true;
 
-onSuccessHandler();
+                onSuccessHandler();
 
-},
+            },
 
-useSSL:false,
+            useSSL: false,
 
-onFailure:this.onFailure,
+            onFailure: this.onFailure,
 
-reconnect:true,
+            reconnect: true,
 
-keepAliveInterval:20,
+            keepAliveInterval: 20,
 
-cleanSession:true,
+            cleanSession: true,
 
-});
+        });
 
-};
+    };
 
-onFailure= ({ errorMessage }) => {
+    onFailure = ({ errorMessage }) => {
 
-console.info(errorMessage);
+        console.info(errorMessage);
 
-this.isConnected=false;
+        this.isConnected = false;
 
-Alert.alert(
-'',
-'Could not connect to MQTT',
+        Alert.alert(
+            '',
+            'Could not connect to MQTT',
 
-[{ text: 'TRY AGAIN', onPress: () => this.connectClient(this.onSuccessHandler, this.onConnectionLostHandler) }],
+            [{ text: 'TRY AGAIN', onPress: () => this.connectClient(this.onSuccessHandler, this.onConnectionLostHandler) }],
 
-{
+            {
 
-cancelable:false,
+                cancelable: false,
 
-},
+            },
 
-);
+        );
 
-};
+    };
 
-onMessageArrived=message=> {
+    onMessageArrived = message => {
 
-const { payloadString, topic } =message;
+        const { payloadString, topic } = message;
 
-this.callbacks[topic](payloadString);
+        this.callbacks[topic](payloadString);
 
-};
+    };
 
-publishMessage= (topic, message) => {
+    publishMessage = (topic, message) => {
 
-if (!this.isConnected) {
+        if (!this.isConnected) {
 
-console.info('not connected');
+            console.info('not connected');
 
-return;
+            return;
 
-}
+        }
 
-this.client.publish(topic, message);
+        this.client.publish(topic, message);
 
-};
+    };
 
-subscribe= (topic, callback) => {
+    subscribe = (topic, callback) => {
 
-if (!this.isConnected) {
+        if (!this.isConnected) {
 
-console.info('not connected');
+            console.info('not connected');
 
-return;
+            return;
 
-}
+        }
 
-this.callbacks[topic] =callback;
+        this.callbacks[topic] = callback;
 
-this.client.subscribe(topic);
+        this.client.subscribe(topic);
 
-};
+    };
 
-unsubscribe=topic=> {
+    unsubscribe = topic => {
 
-if (!this.isConnected) {
+        if (!this.isConnected) {
 
-console.info('not connected');
+            console.info('not connected');
 
-return;
+            return;
 
-}
+        }
 
-delete this.callbacks[topic];
+        delete this.callbacks[topic];
 
-this.client.unsubscribe(topic);
+        this.client.unsubscribe(topic);
 
-};
+    };
 
 }
 
