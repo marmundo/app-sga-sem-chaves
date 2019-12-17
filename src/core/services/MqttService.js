@@ -4,7 +4,31 @@ import init from '../libraries/index';
 
 init();
 
+
+
 class MqttService {
+
+    static local = "localhost"
+    static conf_mqtt = {
+        mosquitto: {
+            url: "test.mosquitto.org",
+            port: 8080,
+            username: "",
+            password: ""
+        },
+        localhost: {
+            url: "localhost",
+            port: 9001,
+            username: "",
+            password: ""
+        },
+        ifrn: {
+            url: "10.225.0.5",
+            port: 8081,
+            username: "ssc_admin",
+            password: "mqtt@123"
+        },
+    }
 
     static instance = null;
 
@@ -22,20 +46,12 @@ class MqttService {
 
     constructor() {
 
-        const clientId = 'mdm';
-        let conf_mqtt = {
-            mosquitto:{
-                url: "test.mosquitto.org",
-                port: 8080
-            },
-            localhost:{
-                url: "localhost",
-                port: 9001
-            },
-        }
-        
+        console.log(this)
 
-        this.client = new Paho.MQTT.Client(conf_mqtt["localhost"].url, conf_mqtt["localhost"].port, clientId)
+        
+        let clientId = 'mdm';
+
+        this.client = new Paho.MQTT.Client(MqttService.conf_mqtt[MqttService.local].url, MqttService.conf_mqtt[MqttService.local].port, clientId)
 
         this.client.onMessageArrived = this.onMessageArrived;
 
@@ -65,6 +81,8 @@ class MqttService {
 
         this.client.connect({
 
+            
+
             timeout: 10,
 
             onSuccess: () => {
@@ -84,6 +102,9 @@ class MqttService {
             keepAliveInterval: 20,
 
             cleanSession: true,
+            userName: MqttService.conf_mqtt[MqttService.local].username,
+            password: MqttService.conf_mqtt[MqttService.local].password,
+
 
         });
 
