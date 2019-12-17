@@ -6,6 +6,8 @@ import MqttService from "./src/core/services/MqttService";
 
 import OfflineNotification from './src/core/components/OfflineNotification';
 
+import {styles} from './src/core/common_style';
+
 const instructions = Platform.select({
 
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -18,9 +20,7 @@ const instructions = Platform.select({
 
 });
 
-type Props = {};
-
-export default class App extends Component<Props> {
+export default class App extends Component {
 
   PAHO = "MqttService";
   MQTTJS = "mqtt.js"
@@ -122,39 +122,3 @@ export default class App extends Component<Props> {
   }
 
 }
-
-const styles = StyleSheet.create({
-
-  container: {
-
-    flex: 1,
-
-    justifyContent: "center",
-
-    alignItems: "center",
-
-    backgroundColor: "#F5FCFF"
-
-  },
-
-  welcome: {
-
-    fontSize: 20,
-
-    textAlign: "center",
-
-    margin: 10
-
-  },
-
-  instructions: {
-
-    textAlign: "center",
-
-    color: "#333333",
-
-    marginBottom: 5
-
-  }
-
-});
