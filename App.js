@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Platform, StyleSheet, Text, View, Button } from "react-native";
+import { Platform, Text, View, Button } from "react-native";
 
 import MqttService from "./src/core/services/MqttService";
 
@@ -30,7 +30,7 @@ export default class App extends Component {
     isConnected: false,
 
     message: "",
-    topic: "ssc/sensor/21/porta",
+    topic: "ssc/sensor/22/porta",
     lib: this.PAHO,
 
   };
@@ -89,7 +89,7 @@ export default class App extends Component {
 
   onPublish = () => {
 
-    MqttService.publishMessage(this.state.topic, "Porta Aberta");
+    MqttService.publishMessage(this.state.topic, "que gostoso");
 
   }
 

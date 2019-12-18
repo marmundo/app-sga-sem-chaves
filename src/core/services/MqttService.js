@@ -8,7 +8,7 @@ init();
 
 class MqttService {
 
-    static local = "localhost"
+    static local = "ifrn"
     static conf_mqtt = {
         mosquitto: {
             url: "test.mosquitto.org",
@@ -93,7 +93,7 @@ class MqttService {
 
             },
 
-            useSSL: false,
+            useSSL: true,
 
             onFailure: this.onFailure,
 
@@ -112,7 +112,7 @@ class MqttService {
 
     onFailure = ({ errorMessage }) => {
 
-        console.info(errorMessage);
+        console.info("Erro"+ errorMessage);
 
         this.isConnected = false;
 
