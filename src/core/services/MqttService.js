@@ -48,7 +48,7 @@ class MqttService {
 
         console.log(this)
 
-        
+
         let clientId = 'mdm';
 
         this.client = new Paho.MQTT.Client(MqttService.conf_mqtt[MqttService.local].url, MqttService.conf_mqtt[MqttService.local].port, clientId)
@@ -81,7 +81,7 @@ class MqttService {
 
         this.client.connect({
 
-            
+
 
             timeout: 10,
 
@@ -112,7 +112,7 @@ class MqttService {
 
     onFailure = ({ errorMessage }) => {
 
-        console.info("Erro"+ errorMessage);
+        console.info("Erro" + errorMessage);
 
         this.isConnected = false;
 
@@ -133,11 +133,8 @@ class MqttService {
     };
 
     onMessageArrived = message => {
-
-        const { payloadString, topic } = message;
-
-        this.callbacks[topic](payloadString);
-
+        // const { payloadString, topic } = message;
+        this.callbacks["ssc/sensor/#"](message);
     };
 
     publishMessage = (topic, message) => {
@@ -163,9 +160,7 @@ class MqttService {
             return;
 
         }
-
         this.callbacks[topic] = callback;
-
         this.client.subscribe(topic);
 
     };
