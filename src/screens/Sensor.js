@@ -6,7 +6,7 @@ const Sensor = (props) => (
     <View style={[
         styles.containerRow,stylesLocal.container] }>
         <Text style={stylesLocal.sensor}>{props.nome}</Text>
-        <Text style={stylesLocal.sensor}>{props.valor}</Text>
+        <Text style={stylesLocal.sensor,stylesLocal.bold}>{props.valor}</Text>
     </View >
 );
 
@@ -16,9 +16,12 @@ const stylesLocal = StyleSheet.create({
     sensor: {
         margin: 10,
     },
+    bold:{
+        fontWeight: 'bold'
+    },
     container:{
         backgroundColor:'lightgrey',
-        justifyContent:'flex-start',
+        justifyContent:'space-around',
         // alignContent:'center',  
     }
 })

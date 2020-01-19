@@ -12,7 +12,14 @@ export default class Sala extends Component {
         isConnected: false,
         topic: "ssc/sensor/#",
         salas: {
+            1: {
+                porta:"aberta"
+            },
             21: {
+            },
+            22: {
+            },
+            23: {
             }
         },
     };
@@ -60,16 +67,16 @@ export default class Sala extends Component {
         sensorM = topicoArray[3]
         valor = payloadString
 
-   
+
         this.setState(prevState => {
             let salas = Object.assign({}, prevState.salas);
             const keys = Object.keys(salas[21]);
-            const values=Object.values(salas[21])
+            const values = Object.values(salas[21])
             console.log(keys);
             console.log(values);
             salas[salaM][sensorM] = valor;
-            console.log("Sensor: "+sensorM+": "+salas[salaM][sensorM])
-            return { salas }; 
+            console.log("Sensor: " + sensorM + ": " + salas[salaM][sensorM])
+            return { salas };
         })
 
 
@@ -78,40 +85,31 @@ export default class Sala extends Component {
 
 
     render() {
+
+        let numberOfRooms = Object.keys(this.state.salas)
+        let roomsLenght = numberOfRooms.length
+
         return (
-            <SafeAreaView style={{ flex: 1, marginTop: 10 }}>
+            <SafeAreaView style={{ flex: 1, marginTop: 10, justifyContent:'center',alignItems:'center' }}>
                 <ScrollView>
-                    <CardView>
-                        <Text style={{ fontWeight: 'bold', textDecorationLine: 'underline', marginBottom: 20 }}>
-                            Sala 21
-                    </Text>
-                        <Sensor nome="Porta" valor={this.state.salas[21].porta}> </Sensor>
-                        <Sensor nome="Temperatura" valor={this.state.salas[21].temperatura}> </Sensor>
-                        <Sensor nome="Presença" valor={this.state.salas[21].presenca}> </Sensor>
-                        <Sensor nome="Humidade" valor={this.state.salas[21].umidade}> </Sensor>
-                        <Sensor nome="Luminosidade" valor={this.state.salas[21].luminosidade}> </Sensor>
-                    </CardView>
-
-                    <CardView>
-                        <Text style={{ fontWeight: 'bold', textDecorationLine: 'underline', marginBottom: 20 }}>
-                            Sala 22
-                    </Text>
-                        <Sensor nome="Porta" valor="Aberta"> </Sensor>
-                        <Sensor nome="Temperatura" valor="30"> </Sensor>
-                        <Sensor nome="Presença" valor="Verdadeira"> </Sensor>
-                        <Sensor nome="Humidade" valor="20%"> </Sensor>
-                    </CardView>
-
-                    <CardView>
-                        <Text style={{ fontWeight: 'bold', textDecorationLine: 'underline', marginBottom: 20 }}>
-                            Sala 23
-                    </Text>
-                        <Sensor nome="Porta" valor="Aberta"> </Sensor>
-                        <Sensor nome="Temperatura" valor="30"> </Sensor>
-                        <Sensor nome="Presença" valor="Verdadeira"> </Sensor>
-                        <Sensor nome="Humidade" valor="20%"> </Sensor>
-                    </CardView>
-
+                    {
+                        // Generates cards dinamically based on number of rooms
+                        roomsLenght > 0 ?
+                            Array(roomsLenght).fill().map((_, i) => i).map(i =>
+                            <CardView key={i} style={{width:350,margin:20}}>
+                                    <Text style={{ fontWeight: 'bold', textDecorationLine: 'underline', marginBottom: 20 }}>
+                                        Sala {numberOfRooms[i]}
+                                    </Text>
+                                    <Sensor nome="Porta" valor={this.state.salas[numberOfRooms[i]].porta}> </Sensor>
+                                    <Sensor nome="Temperatura" valor={this.state.salas[numberOfRooms[i]].temperatura}> </Sensor>
+                                    <Sensor nome="Presença" valor={this.state.salas[numberOfRooms[i]].presenca}> </Sensor>
+                                    <Sensor nome="Humidade" valor={this.state.salas[numberOfRooms[i]].umidade}> </Sensor>
+                                    <Sensor nome="Luminosidade" valor={this.state.salas[numberOfRooms[i]].luminosidade}> </Sensor>
+                                </CardView>
+                            )
+                            :
+                            <Text></Text>
+                    }
                 </ScrollView>
             </SafeAreaView>
         )

@@ -8,7 +8,7 @@ init();
 
 class MqttService {
 
-    static local = "ifrn"
+    static local = "hive"
     static conf_mqtt = {
         mosquitto: {
             url: "test.mosquitto.org",
@@ -18,15 +18,22 @@ class MqttService {
         },
         localhost: {
             url: "localhost",
-            port: 9001,
+            port: 8080,
             username: "",
             password: ""
         },
         ifrn: {
-            url: "10.225.0.5",
+            url: "localhost",
             port: 8081,
             username: "ssc_admin",
             password: "mqtt@123"
+        },
+        hive: {
+            url: "broker.mqttdashboard.com",
+            // url:"broker.hivemq.com",
+            port: 8000,
+            username: "",
+            password: ""
         },
     }
 
@@ -78,7 +85,11 @@ class MqttService {
             onConnectionLostHandler();
 
         };
-
+        if(MqttService.local==="ifrn" ||MqttService.local==="hive" ){
+            useSSL=true
+        }else{
+            useSSL=false
+        }
         this.client.connect({
 
 
@@ -92,8 +103,8 @@ class MqttService {
                 onSuccessHandler();
 
             },
-
-            useSSL: true,
+            
+            useSSL: false,
 
             onFailure: this.onFailure,
 

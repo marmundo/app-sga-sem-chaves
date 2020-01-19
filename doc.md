@@ -1,5 +1,7 @@
 # start mosquitto
-https://stackoverflow.com/questions/31045974/restarting-the-mosquito-broker/31113901
+
+$ launchctl start homebrew.mxcl.mosquitto
+$ launchctl stop homebrew.mxcl.mosquitto
 
 # paho js docs
 https://www.eclipse.org/paho/files/jsdoc/index.html

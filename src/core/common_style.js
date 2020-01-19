@@ -13,6 +13,10 @@ const styles = StyleSheet.create({
 
   },
 
+  card:{
+
+  },
+
   containerRow: {
     flexDirection: 'row',
     justifyContent: "center",
