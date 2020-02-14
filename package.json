@@ -11,8 +11,12 @@
     "build-android": "cd android && ./gradlew assembleRelease"
   },
   "dependencies": {
+    "@react-native-community/push-notification-ios": "^1.0.5",
+    "moment": "^2.24.0",
     "react": "16.9.0",
+    "react-moment": "^0.9.7",
     "react-native": "0.61.5",
+    "react-native-push-notification": "^3.1.9",
     "react-native-simple-card-view": "^0.3.0"
   },
   "devDependencies": {

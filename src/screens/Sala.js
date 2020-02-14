@@ -1,32 +1,71 @@
 import React, { Component } from "react";
-import { Text, ScrollView, SafeAreaView } from "react-native";
-import Sensor from "./Sensor"
-import { CardView } from 'react-native-simple-card-view'
-import { styles } from '../core/common_style';
+import { Alert, SafeAreaView, ScrollView, StyleSheet, Text } from "react-native";
+import { CardView } from 'react-native-simple-card-view';
 import MqttService from "../core/services/MqttService";
+import NotifService from '../core/services/NotifService';
+import appConfig from './app.json';
+import Sensor from "./Sensor";
+import moment from "moment";
 
 export default class Sala extends Component {
 
-
-    state = {
-        isConnected: false,
-        topic: "ssc/sensor/#",
-        salas: {
-            1: {
-                porta:"aberta"
+    constructor(props) {
+        super(props);
+        this.state = {
+            senderId: appConfig.senderID,
+            isConnected: false,
+            topic: "ssc/sensor/#",
+            salas: {
+                1: {
+                    porta: "aberta"
+                },
+                21: {
+                },
+                22: {
+                },
+                23: {
+                }
             },
-            21: {
-            },
-            22: {
-            },
-            23: {
-            }
-        },
-    };
+        };
+
+        this.notif = new NotifService(this.onRegister.bind(this), this.onNotif.bind(this));
+    }
+
+    onRegister(token) {
+        Alert.alert("Registered !", JSON.stringify(token));
+        console.log(token);
+        this.setState({ registerToken: token.token, gcmRegistered: true });
+    }
+
+    onNotif(notif) {
+        console.log(notif);
+        Alert.alert(notif.title, notif.message);
+    }
+
+    handlePerm(perms) {
+        Alert.alert("Permissions", JSON.stringify(perms));
+    }
 
 
+    showLocalNotification(message) {
+        this.notif.localNotif(message);
+    }
 
+    verificarPortaAbertaDepoisDas22EAntesDas07(numeroPorta) {
+        var vinteduas = moment('10:00pm', 'h:mma');
+        var sete = moment('7:00am', 'h:mma');
+        var now= moment(new Date())
+        var verificaAntesDasSete=now.isBefore(sete)
+        var verificaDepoisVinteDuas=now.isAfter(vinteduas)
+        var verificaHora= verificaAntesDasSete && verificaDepoisVinteDuas
+        if (this.state.salas[numeroPorta].porta == "aberta" && verificaHora) {
+            this.showLocalNotification("Porta aberta")
+        }
+    }
     componentDidMount() {
+        //Se a porta aberta quando recebe
+        this.verificarPortaAbertaDepoisDas22EAntesDas07(1);
+
         MqttService.connectClient(
             this.mqttSuccessHandler,
             this.mqttConnectionLostHandler
@@ -75,7 +114,7 @@ export default class Sala extends Component {
             console.log(keys);
             console.log(values);
             salas[salaM][sensorM] = valor;
-            console.log("Sensor: " + sensorM + ": " + salas[salaM][sensorM])
+            notify("SGA Sem Chaves", "Sensor: " + sensorM + ": " + salas[salaM][sensorM])
             return { salas };
         })
 
@@ -90,13 +129,13 @@ export default class Sala extends Component {
         let roomsLenght = numberOfRooms.length
 
         return (
-            <SafeAreaView style={{ flex: 1, marginTop: 10, justifyContent:'center',alignItems:'center' }}>
+            <SafeAreaView style={{ flex: 1, marginTop: 10, justifyContent: 'center', alignItems: 'center' }}>
                 <ScrollView>
                     {
                         // Generates cards dinamically based on number of rooms
                         roomsLenght > 0 ?
                             Array(roomsLenght).fill().map((_, i) => i).map(i =>
-                            <CardView key={i} style={{width:350,margin:20}}>
+                                <CardView key={i} style={{ width: 350, margin: 20 }}>
                                     <Text style={{ fontWeight: 'bold', textDecorationLine: 'underline', marginBottom: 20 }}>
                                         Sala {numberOfRooms[i]}
                                     </Text>
@@ -115,4 +154,16 @@ export default class Sala extends Component {
         )
     }
 
+
 }
+const styles = StyleSheet.create({
+    button: {
+        borderWidth: 1,
+        borderColor: "#000000",
+        margin: 5,
+        padding: 5,
+        width: "70%",
+        backgroundColor: "#DDDDDD",
+        borderRadius: 5,
+    },
+})
