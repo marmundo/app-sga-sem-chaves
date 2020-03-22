@@ -14,7 +14,8 @@ class Login extends Component {
     state = {
         name: 'Temporario',
         email: '',
-        password: ''
+        password: '',
+        error:'',
     }
 
     componentDidUpdate = prevProps => {
@@ -23,8 +24,32 @@ class Login extends Component {
         }
     }
 
-    login = () => {
-        this.props.onLogin({ ...this.state })
+    login = async () => {
+        if (this.state.email.length === 0 || this.state.password.length === 0) {
+            this.setState({ error: 'Preencha usuário e senha para continuar!' }, () => false);
+          } else {
+            //   Codigo de https://github.com/Rocketseat/blog-adonis-reactjs-react-native-airbnb-app/blob/master/src/pages/signIn/index.js
+        //     try {
+        //       const response = await api.post('/sessions', {
+        //         email: this.state.email,
+        //         password: this.state.password,
+        //       });
+      
+        //       await AsyncStorage.setItem('@AirBnbApp:token', response.data.token);
+      
+        //       const resetAction = StackActions.reset({
+        //         index: 0,
+        //         actions: [
+        //           NavigationActions.navigate({ routeName: 'Main' }),
+        //         ],
+        //       });
+        //       this.props.navigation.dispatch(resetAction);
+        //     } catch (_err) {
+        //     //   console.tron.log(_err);
+        //     console.log(_err)
+        //       this.setState({ error: 'Houve um problema com o login, verifique suas credenciais!' });
+        //     }
+          }
     }
 
     render() {
@@ -40,11 +65,11 @@ class Login extends Component {
                 <TouchableOpacity onPress={this.login} style={styles.buttom}>
                     <Text style={styles.buttomText}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => {
+                {/* <TouchableOpacity onPress={() => {
                     this.props.navigation.navigate('Register')
                 }} style={styles.buttom}>
                     <Text style={styles.buttomText}>Criar nova conta...</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
         )
     }
@@ -59,7 +84,7 @@ const styles = StyleSheet.create({
     buttom: {
         marginTop: 30,
         padding: 10,
-        backgroundColor: '#4286f4'
+        backgroundColor: 'green'
     },
     buttomText: {
         fontSize: 20,
