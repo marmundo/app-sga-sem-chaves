@@ -17,9 +17,11 @@ export default class Sala extends Component {
             topic: "ssc/sensor/#",
             salas: {
                 1: {
-                    porta: "aberta"
+                    porta: "aberta",
+                    temperatura: 30,
                 },
                 21: {
+                    porta: "fechada"
                 },
                 22: {
                 },
