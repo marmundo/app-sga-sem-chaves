@@ -1,8 +1,7 @@
+import 'react-native-gesture-handler';
 import React, { Component } from 'react'
 import api from '../core/services/api'
-// import { connect } from 'react-redux'
-// import { login } from '../store/actions/user'
-
+// import { NavigationContainer } from '@react-navigation/native';
 
 import {
     View,
@@ -21,12 +20,6 @@ class Login extends Component {
         error: '',
     }
 
-    componentDidUpdate = prevProps => {
-        if (prevProps.isLoading && !this.props.isLoading) {
-            this.props.navigation.navigate('Profile')
-        }
-    }
-
     login = async () => {
         if (this.state.username.length === 0 || this.state.password.length === 0) {
             this.setState({ error: 'Preencha usuário e senha para continuar!' }, () => false);
@@ -42,7 +35,7 @@ class Login extends Component {
                 // await AsyncStorage.setItem('@AirBnbApp:token', response.data.token);
 
                 // TODO: Configurar o react navigation
-                // this.props.navigation.navigate('Sala');
+                this.props.navigation.navigate('Sala');
             } catch (_err) {
                 //console.tron.log(_err);
                 this.setState({ error: 'Houve um problema com o login, verifique suas credenciais!' });
