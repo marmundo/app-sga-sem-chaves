@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert, SafeAreaView, ScrollView, StyleSheet, Text } from "react-native";
+import { Alert, SafeAreaView, ScrollView, StyleSheet, Text, Dimensions } from "react-native";
 import { CardView } from 'react-native-simple-card-view';
 import MqttService from "../core/services/MqttService";
 import NotifService from '../core/services/NotifService';
@@ -54,10 +54,10 @@ export default class Sala extends Component {
     verificarPortaAbertaDepoisDas22EAntesDas07(numeroPorta) {
         var vinteduas = moment('10:00pm', 'h:mma');
         var sete = moment('7:00am', 'h:mma');
-        var now= moment(new Date())
-        var verificaAntesDasSete=now.isBefore(sete)
-        var verificaDepoisVinteDuas=now.isAfter(vinteduas)
-        var verificaHora= verificaAntesDasSete && verificaDepoisVinteDuas
+        var now = moment(new Date())
+        var verificaAntesDasSete = now.isBefore(sete)
+        var verificaDepoisVinteDuas = now.isAfter(vinteduas)
+        var verificaHora = verificaAntesDasSete && verificaDepoisVinteDuas
         if (this.state.salas[numeroPorta].porta == "aberta" && verificaHora) {
             this.showLocalNotification("Porta aberta")
         }
@@ -70,6 +70,7 @@ export default class Sala extends Component {
             this.mqttSuccessHandler,
             this.mqttConnectionLostHandler
         );
+
     }
 
     mqttConnectionLostHandler = () => {
@@ -121,7 +122,10 @@ export default class Sala extends Component {
 
     };
 
-
+    getLarguradaTela = () => {
+        var largura = Math.round(Dimensions.get('window').width);
+        return largura;
+    }
 
     render() {
 
@@ -132,10 +136,11 @@ export default class Sala extends Component {
             <SafeAreaView style={{ flex: 1, marginTop: 10, justifyContent: 'center', alignItems: 'center' }}>
                 <ScrollView>
                     {
+
                         // Generates cards dinamically based on number of rooms
                         roomsLenght > 0 ?
                             Array(roomsLenght).fill().map((_, i) => i).map(i =>
-                                <CardView key={i} style={{ width: 350, margin: 20 }}>
+                                <CardView key={i} style={{ width: this.getLarguradaTela() * 0.9, margin: 20 }}>
                                     <Text style={{ fontWeight: 'bold', textDecorationLine: 'underline', marginBottom: 20 }}>
                                         Sala {numberOfRooms[i]}
                                     </Text>
