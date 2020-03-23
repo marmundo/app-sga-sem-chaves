@@ -20,3 +20,6 @@ https://motion-software.com/blog/how-to-use-mqtt-with-react-native/
 
 # Testar no Hive
 http://www.hivemq.com/demos/websocket-client/
+
+# Testar no mosquitto
+mosquitto_pub -h test.mosquitto.org -t "ssc/sensor/1/porta" -m "fechada"
