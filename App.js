@@ -14,7 +14,11 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Sala" component={Sala} />
+        <Stack.Screen name="Sala" component={Sala}
+          options={{
+            title: 'Salas',
+            headerLeft: null,
+          }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
