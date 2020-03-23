@@ -17,7 +17,6 @@ export default class Sala extends Component {
             topic: "ssc/sensor/#",
             salas: {
                 1: {
-                    // porta: "aberta"
                 },
                 21: {
                 },
@@ -119,7 +118,7 @@ export default class Sala extends Component {
             // const values = Object.values(salas[salaM])
      
             salas[salaM][sensorM] = valor;
-            // notify("SGA Sem Chaves", "Sensor: " + sensorM + ": " + salas[salaM][sensorM])
+            this.showLocalNotification(`Sala ${salaM}== ${salas[salaM][sensorM]}`)
             return { salas };
         })
 
