@@ -17,7 +17,6 @@ export default class Sala extends Component {
             topic: "ssc/sensor/#",
             salas: {
                 1: {
-                    porta: "aberta"
                 },
                 21: {
                 },
@@ -108,14 +107,19 @@ export default class Sala extends Component {
         valor = payloadString
 
 
+
         this.setState(prevState => {
             let salas = Object.assign({}, prevState.salas);
-            const keys = Object.keys(salas[21]);
-            const values = Object.values(salas[21])
-            console.log(keys);
-            console.log(values);
+            if(salas[salaM]==undefined){
+                sensor_valor={}
+                sensor_valor[sensorM]=valor
+                salas[salaM]=sensor_valor
+            }
+            // const keys = Object.keys(salas[salaM]);
+            // const values = Object.values(salas[salaM])
+     
             salas[salaM][sensorM] = valor;
-            notify("SGA Sem Chaves", "Sensor: " + sensorM + ": " + salas[salaM][sensorM])
+            this.showLocalNotification(`Sala ${salaM}== ${salas[salaM][sensorM]}`)
             return { salas };
         })
 

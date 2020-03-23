@@ -8,13 +8,14 @@ init();
 
 class MqttService {
 
-    static local = "hive"
+    static local = "mosquitto"
     static conf_mqtt = {
         mosquitto: {
             url: "test.mosquitto.org",
             port: 8080,
             username: "",
-            password: ""
+            password: "",
+            path:"/mqtt"
         },
         localhost: {
             url: "localhost",
@@ -58,7 +59,7 @@ class MqttService {
 
         let clientId = 'mdm';
 
-        this.client = new Paho.MQTT.Client(MqttService.conf_mqtt[MqttService.local].url, MqttService.conf_mqtt[MqttService.local].port, clientId)
+        this.client = new Paho.MQTT.Client(MqttService.conf_mqtt[MqttService.local].url, MqttService.conf_mqtt[MqttService.local].port,MqttService.conf_mqtt[MqttService.local].path,clientId)
 
         this.client.onMessageArrived = this.onMessageArrived;
 
@@ -85,17 +86,16 @@ class MqttService {
             onConnectionLostHandler();
 
         };
-        if(MqttService.local==="ifrn" ||MqttService.local==="hive" ){
-            useSSL=true
-        }else{
-            useSSL=false
+        if (MqttService.local === "ifrn" || MqttService.local === "hive") {
+            useSSL = true
+        } else {
+            useSSL = false
+        }
+        if (this.client && this.client.isConnected()) {
+            this.client.disconnect()
         }
         this.client.connect({
-
-
-
             timeout: 10,
-
             onSuccess: () => {
 
                 this.isConnected = true;
@@ -103,7 +103,7 @@ class MqttService {
                 onSuccessHandler();
 
             },
-            
+
             useSSL: false,
 
             onFailure: this.onFailure,
@@ -124,12 +124,13 @@ class MqttService {
     onFailure = ({ errorMessage }) => {
 
         console.info("Erro" + errorMessage);
+        erro = "Erro: " + errorMessage + "======" + this.client._getHost() + "======" + "SSL: " + this.client._getPath() + "URL: " + this.client._getURI() + "Porta: " + this.client._getPort()
 
         this.isConnected = false;
 
         Alert.alert(
-            '',
             'Could not connect to MQTT',
+            erro,
 
             [{ text: 'TRY AGAIN', onPress: () => this.connectClient(this.onSuccessHandler, this.onConnectionLostHandler) }],
 
