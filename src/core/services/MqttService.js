@@ -113,8 +113,8 @@ class MqttService {
             keepAliveInterval: 20,
 
             cleanSession: true,
-            // userName: MqttService.conf_mqtt[MqttService.local].username,
-            // password: MqttService.conf_mqtt[MqttService.local].password,
+            userName: MqttService.conf_mqtt[MqttService.local].username,
+            password: MqttService.conf_mqtt[MqttService.local].password,
 
 
         });
