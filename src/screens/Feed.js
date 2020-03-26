@@ -6,7 +6,7 @@ import NotifService from '../core/services/NotifService';
 import appConfig from './app.json';
 import Sensor from "../core/components/Sensor";
 import moment from "moment";
-import getLarguradaTela from "../core/libraries/Commons"
+import {getLarguradaTela,consts} from "../core/libraries/Commons"
 
 export default class Feed extends Component {
 
@@ -18,7 +18,7 @@ export default class Feed extends Component {
             topic: "ssc/sensor/#",
             salas: {
                 1: {
-                    porta:"aberta"
+                    porta:"Aberta",
                 },
                 21: {
                 },
