@@ -162,7 +162,7 @@ class MqttService {
     };
 
     publishMessage = (topic, message) => {
-
+        console.log("Publicando: ",topic,message)
         if (!this.isConnected) {
 
             console.info('not connected');

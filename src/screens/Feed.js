@@ -6,7 +6,7 @@ import NotifService from '../core/services/NotifService';
 import appConfig from './app.json';
 import Sensor from "../core/components/Sensor";
 import moment from "moment";
-import {getLarguradaTela,consts} from "../core/libraries/Commons"
+import { getLarguradaTela, consts } from "../core/libraries/Commons"
 
 export default class Feed extends Component {
 
@@ -15,10 +15,10 @@ export default class Feed extends Component {
         this.state = {
             senderId: appConfig.senderID,
             isConnected: false,
-            topic: "ssc/sensor/#",
+            topic: consts.topic,
             salas: {
                 1: {
-                    porta:"Aberta",
+                    porta: "Aberta",
                 },
                 21: {
                 },
@@ -154,18 +154,14 @@ export default class Feed extends Component {
                         this.state.roomsLenght > 0 ?
                             Array(this.state.roomsLenght).fill().map((_, i) => i).map(i =>
                                 <TouchableOpacity key={i} onPress={() => this.navigatetoSala(i)} style={{ width: getLarguradaTela() * 0.9, margin: 20 }}>
-                                    {/* <CardView  > */}
-
-                                        <Text style={{ fontWeight: 'bold', textDecorationLine: 'underline', marginBottom: 20 }}>
-                                            Sala {this.state.numberOfRooms[i]}
-                                        </Text>
-
-                                        <Sensor nome="Porta" valor={this.state.salas[this.state.numberOfRooms[i]].porta}> </Sensor>
-                                        <Sensor nome="Temperatura" valor={this.state.salas[this.state.numberOfRooms[i]].temperatura}> </Sensor>
-                                        <Sensor nome="Presença" valor={this.state.salas[this.state.numberOfRooms[i]].presenca}> </Sensor>
-                                        <Sensor nome="Humidade" valor={this.state.salas[this.state.numberOfRooms[i]].umidade}> </Sensor>
-                                        <Sensor nome="Luminosidade" valor={this.state.salas[this.state.numberOfRooms[i]].luminosidade}> </Sensor>
-                                    {/* </CardView> */}
+                                    <Text style={{ fontWeight: 'bold', textDecorationLine: 'underline', marginBottom: 20 }}>
+                                        Sala {this.state.numberOfRooms[i]}
+                                    </Text>
+                                    <Sensor nome={consts.nomesSensores.porta} valor={this.state.salas[this.state.numberOfRooms[i]].porta}> </Sensor>
+                                    <Sensor nome={consts.nomesSensores.temperatura} valor={this.state.salas[this.state.numberOfRooms[i]].temperatura}> </Sensor>
+                                    <Sensor nome={consts.nomesSensores.presenca} valor={this.state.salas[this.state.numberOfRooms[i]].presenca}> </Sensor>
+                                    <Sensor nome={consts.nomesSensores.umidade} valor={this.state.salas[this.state.numberOfRooms[i]].umidade}> </Sensor>
+                                    <Sensor nome={consts.nomesSensores.luminosidade} valor={this.state.salas[this.state.numberOfRooms[i]].luminosidade}> </Sensor>
                                 </TouchableOpacity>
                             )
                             :
