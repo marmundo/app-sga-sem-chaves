@@ -45,7 +45,6 @@ export default class Sala extends Component {
         Alert.alert("Permissions", JSON.stringify(perms));
     }
 
-
     showLocalNotification(message) {
         this.notif.localNotif(message);
     }
@@ -61,6 +60,7 @@ export default class Sala extends Component {
             this.showLocalNotification("Porta aberta")
         }
     }
+
     componentDidMount() {
         //Se a porta aberta quando recebe
         this.verificarPortaAbertaDepoisDas22EAntesDas07(1);
@@ -73,13 +73,9 @@ export default class Sala extends Component {
     }
 
     mqttConnectionLostHandler = () => {
-
         this.setState({
-
             isConnected: false
-
         });
-
     };
 
 
@@ -97,32 +93,27 @@ export default class Sala extends Component {
 
     };
 
+
     onTopic = message => {
         const { payloadString, topic } = message;
 
-
         topicoArray = topic.split("/")
+
         salaM = topicoArray[2]
         sensorM = topicoArray[3]
         valor = payloadString
 
-
-
         this.setState(prevState => {
             let salas = Object.assign({}, prevState.salas);
-            if(salas[salaM]==undefined){
-                sensor_valor={}
-                sensor_valor[sensorM]=valor
-                salas[salaM]=sensor_valor
+            if (salas[salaM] == undefined) {
+                sensor_valor = {}
+                sensor_valor[sensorM] = valor
+                salas[salaM] = sensor_valor
             }
-            // const keys = Object.keys(salas[salaM]);
-            // const values = Object.values(salas[salaM])
-     
             salas[salaM][sensorM] = valor;
             this.showLocalNotification(`Sala ${salaM}== ${salas[salaM][sensorM]}`)
             return { salas };
         })
-
 
     };
 

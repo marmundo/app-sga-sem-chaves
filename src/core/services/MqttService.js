@@ -15,7 +15,7 @@ class MqttService {
             port: 8080,
             username: "",
             password: "",
-            path:"/mqtt"
+            path: "/mqtt"
         },
         localhost: {
             url: "localhost",
@@ -59,7 +59,7 @@ class MqttService {
 
         let clientId = 'mdm';
 
-        this.client = new Paho.MQTT.Client(MqttService.conf_mqtt[MqttService.local].url, MqttService.conf_mqtt[MqttService.local].port,MqttService.conf_mqtt[MqttService.local].path,clientId)
+        this.client = new Paho.MQTT.Client(MqttService.conf_mqtt[MqttService.local].url, MqttService.conf_mqtt[MqttService.local].port, MqttService.conf_mqtt[MqttService.local].path, clientId)
 
         this.client.onMessageArrived = this.onMessageArrived;
 
@@ -115,12 +115,24 @@ class MqttService {
             cleanSession: true,
             // userName: MqttService.conf_mqtt[MqttService.local].username,
             // password: MqttService.conf_mqtt[MqttService.local].password,
-
-
         });
 
     };
 
+    onTopic = message => {
+        const { payloadString, topic } = message;
+
+        topicoArray = topic.split("/")
+
+        update = {
+            salaM: topicoArray[2],
+            sensorM: topicoArray[3],
+            valor: payloadString
+        }
+        return this.updateSala(update);
+
+    };
+    
     onFailure = ({ errorMessage }) => {
 
         console.info("Erro" + errorMessage);
