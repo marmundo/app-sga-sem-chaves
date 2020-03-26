@@ -35,7 +35,7 @@ class Login extends Component {
                 // await AsyncStorage.setItem('@AirBnbApp:token', response.data.token);
 
                 // TODO: Configurar o react navigation
-                this.props.navigation.navigate('Sala');
+                this.props.navigation.navigate('Feed');
             } catch (_err) {
                 //console.tron.log(_err);
                 this.setState({ error: 'Houve um problema com o login, verifique suas credenciais!' });

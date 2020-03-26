@@ -7,7 +7,7 @@ import appConfig from './app.json';
 import Sensor from "./Sensor";
 import moment from "moment";
 
-export default class Sala extends Component {
+export default class Feed extends Component {
 
     constructor(props) {
         super(props);
