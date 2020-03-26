@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, StyleSheet, View } from 'react-native';
-import { styles } from "../core/common_style";
+import { styles } from "../common_style";
 
 const Sensor = (props) => (
     <View style={[

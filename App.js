@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from './src/screens/Login'
 import Feed from './src/screens/Feed'
+import Sala from './src/core/components/Sala'
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,10 @@ function App() {
           options={{
             title: 'Salas',
             headerLeft: null,
+          }} />
+        <Stack.Screen name="Sala" component={Sala}
+          options={{
+            title: 'Sala',
           }} />
       </Stack.Navigator>
     </NavigationContainer>

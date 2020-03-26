@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Alert, SafeAreaView, ScrollView, StyleSheet, Text, Dimensions } from "react-native";
+import { Alert, SafeAreaView, ScrollView, StyleSheet, Text, Dimensions, TouchableOpacity } from "react-native";
 import { CardView } from 'react-native-simple-card-view';
 import MqttService from "../core/services/MqttService";
 import NotifService from '../core/services/NotifService';
 import appConfig from './app.json';
-import Sensor from "./Sensor";
+import Sensor from "../core/components/Sensor";
 import moment from "moment";
+import getLarguradaTela from "../core/libraries/Commons"
 
 export default class Feed extends Component {
 
@@ -17,6 +18,7 @@ export default class Feed extends Component {
             topic: "ssc/sensor/#",
             salas: {
                 1: {
+                    porta:"aberta"
                 },
                 21: {
                 },
@@ -25,9 +27,13 @@ export default class Feed extends Component {
                 23: {
                 }
             },
+            numberOfRooms: "",
+            roomsLenght: 0,
         };
 
+
         this.notif = new NotifService(this.onRegister.bind(this), this.onNotif.bind(this));
+        this.navigatetoSala = this.navigatetoSala.bind(this);
     }
 
     onRegister(token) {
@@ -62,6 +68,12 @@ export default class Feed extends Component {
     }
 
     componentDidMount() {
+
+        numberOfRooms = Object.keys(this.state.salas),
+            roomsLenght = numberOfRooms.length
+        this.setState({ numberOfRooms })
+        this.setState({ roomsLenght })
+
         //Se a porta aberta quando recebe
         this.verificarPortaAbertaDepoisDas22EAntesDas07(1);
 
@@ -117,40 +129,50 @@ export default class Feed extends Component {
 
     };
 
-    getLarguradaTela = () => {
-        var largura = Math.round(Dimensions.get('window').width);
-        return largura;
+
+
+    navigatetoSala = (i) => {
+        params = {
+            sala: this.state.numberOfRooms[i],
+            porta: this.state.salas[this.state.numberOfRooms[i]].porta,
+            temperatura: this.state.salas[this.state.numberOfRooms[i]].temperatura,
+            presenca: this.state.salas[this.state.numberOfRooms[i]].presenca,
+            //TODO: Mudar nome da variavel
+            umidade: this.state.salas[this.state.numberOfRooms[i]].umidade,
+            luminosidade: this.state.salas[this.state.numberOfRooms[i]].luminosidade,
+        }
+        this.props.navigation.navigate('Sala', params)
     }
 
     render() {
-
-        let numberOfRooms = Object.keys(this.state.salas)
-        let roomsLenght = numberOfRooms.length
 
         return (
             <SafeAreaView style={{ flex: 1, marginTop: 10, justifyContent: 'center', alignItems: 'center' }}>
                 <ScrollView>
                     {
-
                         // Generates cards dinamically based on number of rooms
-                        roomsLenght > 0 ?
-                            Array(roomsLenght).fill().map((_, i) => i).map(i =>
-                                <CardView key={i} style={{ width: this.getLarguradaTela() * 0.9, margin: 20 }}>
-                                    <Text style={{ fontWeight: 'bold', textDecorationLine: 'underline', marginBottom: 20 }}>
-                                        Sala {numberOfRooms[i]}
-                                    </Text>
-                                    <Sensor nome="Porta" valor={this.state.salas[numberOfRooms[i]].porta}> </Sensor>
-                                    <Sensor nome="Temperatura" valor={this.state.salas[numberOfRooms[i]].temperatura}> </Sensor>
-                                    <Sensor nome="Presença" valor={this.state.salas[numberOfRooms[i]].presenca}> </Sensor>
-                                    <Sensor nome="Humidade" valor={this.state.salas[numberOfRooms[i]].umidade}> </Sensor>
-                                    <Sensor nome="Luminosidade" valor={this.state.salas[numberOfRooms[i]].luminosidade}> </Sensor>
-                                </CardView>
+                        this.state.roomsLenght > 0 ?
+                            Array(this.state.roomsLenght).fill().map((_, i) => i).map(i =>
+                                <TouchableOpacity key={i} onPress={() => this.navigatetoSala(i)} style={{ width: getLarguradaTela() * 0.9, margin: 20 }}>
+                                    {/* <CardView  > */}
+
+                                        <Text style={{ fontWeight: 'bold', textDecorationLine: 'underline', marginBottom: 20 }}>
+                                            Sala {this.state.numberOfRooms[i]}
+                                        </Text>
+
+                                        <Sensor nome="Porta" valor={this.state.salas[this.state.numberOfRooms[i]].porta}> </Sensor>
+                                        <Sensor nome="Temperatura" valor={this.state.salas[this.state.numberOfRooms[i]].temperatura}> </Sensor>
+                                        <Sensor nome="Presença" valor={this.state.salas[this.state.numberOfRooms[i]].presenca}> </Sensor>
+                                        <Sensor nome="Humidade" valor={this.state.salas[this.state.numberOfRooms[i]].umidade}> </Sensor>
+                                        <Sensor nome="Luminosidade" valor={this.state.salas[this.state.numberOfRooms[i]].luminosidade}> </Sensor>
+                                    {/* </CardView> */}
+                                </TouchableOpacity>
                             )
                             :
                             <Text></Text>
                     }
                 </ScrollView>
-            </SafeAreaView>
+            </SafeAreaView >
         )
     }
 
