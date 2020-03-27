@@ -1,52 +1,41 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
-
   container: {
-
     flex: 1,
 
-    justifyContent: "center",
+    justifyContent: 'center',
 
-    alignItems: "center",
+    alignItems: 'center',
 
-    backgroundColor: "#F5FCFF"
-
+    backgroundColor: '#F5FCFF',
   },
 
-  card:{
-
-  },
+  card: {},
 
   containerRow: {
     flexDirection: 'row',
-    justifyContent: "center",
+    justifyContent: 'center',
 
-    alignItems: "center",
+    alignItems: 'center',
 
-    backgroundColor: "#F5FCFF"
-
+    backgroundColor: '#F5FCFF',
   },
 
   welcome: {
-
     fontSize: 20,
 
-    textAlign: "center",
+    textAlign: 'center',
 
-    margin: 10
-
+    margin: 10,
   },
 
   instructions: {
+    textAlign: 'center',
 
-    textAlign: "center",
+    color: '#333333',
 
-    color: "#333333",
-
-    marginBottom: 5
-
-  }
-
+    marginBottom: 5,
+  },
 });
 
-export { styles }
+export { styles };

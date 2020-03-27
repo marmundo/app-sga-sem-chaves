@@ -1,23 +1,23 @@
-import { Dimensions } from "react-native";
+import { Dimensions } from 'react-native';
 
 const getLarguradaTela = () => {
-    var largura = Math.round(Dimensions.get('window').width);
-    return largura;
-}
+  var largura = Math.round(Dimensions.get('window').width);
+  return largura;
+};
 
-const consts={
-    aberta:"Aberta",
-    fechada:"Fechada",
-    topic:"ssc/sensor/#",
-    porta:"porta",
-    topicRaiz:"ssc/sensor/",
-    nomesSensores:{
-        porta:"Porta",
-        temperatura:"Temperatura",
-        presenca:"Presença",
-        luminosidade:"Luminosidade",
-        umidade:"Umidade"
-    }
-}
+const consts = {
+  aberta: 'Aberta',
+  fechada: 'Fechada',
+  topic: 'ssc/sensor/#',
+  porta: 'porta',
+  topicRaiz: 'ssc/sensor/',
+  nomesSensores: {
+    porta: 'Porta',
+    temperatura: 'Temperatura',
+    presenca: 'Presença',
+    luminosidade: 'Luminosidade',
+    umidade: 'Umidade',
+  },
+};
 
-export {getLarguradaTela, consts}
+export { getLarguradaTela, consts };
