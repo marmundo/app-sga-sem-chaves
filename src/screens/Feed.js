@@ -5,7 +5,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  Dimensions,
   TouchableOpacity,
 } from 'react-native';
 import MqttService from '../core/services/MqttService';
@@ -88,13 +87,18 @@ export default class Feed extends Component {
   }
 
   mqttConnectionLostHandler = () => {
+    console.log('Conexão Perdida');
     this.setState({
       isConnected: false,
     });
+    MqttService.connectClient(
+      this.mqttSuccessHandler,
+      this.mqttConnectionLostHandler
+    );
   };
 
   mqttSuccessHandler = () => {
-    console.info('connected to mqtt');
+    console.log('connected to mqtt');
 
     MqttService.subscribe(this.state.topic, this.onTopic);
 
