@@ -48,7 +48,9 @@ class MqttService {
   constructor() {
     console.log(this);
 
-    let clientId = 'mdm';
+    let clientId =
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
 
     this.client = new Paho.MQTT.Client(
       MqttService.conf_mqtt[MqttService.local].url,
