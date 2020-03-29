@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Alert,
   SafeAreaView,
@@ -8,13 +8,13 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import {CardView} from 'react-native-simple-card-view';
+import { CardView } from 'react-native-simple-card-view';
 import MqttService from '../core/services/MqttService';
 import NotifService from '../core/services/NotifService';
 import appConfig from './app.json';
 import Sensor from '../core/components/Sensor';
 import moment from 'moment';
-import {getLarguradaTela, consts} from '../core/libraries/Commons';
+import { getLarguradaTela, consts } from '../core/libraries/Commons';
 
 export default class Feed extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ export default class Feed extends Component {
 
     this.notif = new NotifService(
       this.onRegister.bind(this),
-      this.onNotif.bind(this),
+      this.onNotif.bind(this)
     );
     this.navigatetoSala = this.navigatetoSala.bind(this);
   }
@@ -45,7 +45,7 @@ export default class Feed extends Component {
   onRegister(token) {
     Alert.alert('Registered !', JSON.stringify(token));
     console.log(token);
-    this.setState({registerToken: token.token, gcmRegistered: true});
+    this.setState({ registerToken: token.token, gcmRegistered: true });
   }
 
   onNotif(notif) {
@@ -76,15 +76,15 @@ export default class Feed extends Component {
   componentDidMount() {
     (numberOfRooms = Object.keys(this.state.salas)),
       (roomsLenght = numberOfRooms.length);
-    this.setState({numberOfRooms});
-    this.setState({roomsLenght});
+    this.setState({ numberOfRooms });
+    this.setState({ roomsLenght });
 
     //Se a porta aberta quando recebe
     this.verificarPortaAbertaDepoisDas22EAntesDas07(1);
 
     MqttService.connectClient(
       this.mqttSuccessHandler,
-      this.mqttConnectionLostHandler,
+      this.mqttConnectionLostHandler
     );
   }
 
@@ -129,7 +129,7 @@ export default class Feed extends Component {
       }
       salas[salaM][sensorM] = valor;
       this.showLocalNotification(`Sala ${salaM}== ${salas[salaM][sensorM]}`);
-      return {salas};
+      return { salas };
     });
   };
 
@@ -154,7 +154,8 @@ export default class Feed extends Component {
           marginTop: 10,
           justifyContent: 'center',
           alignItems: 'center',
-        }}>
+        }}
+      >
         <ScrollView>
           {// Generates cards dinamically based on number of rooms
           this.state.roomsLenght > 0 ? (
@@ -165,46 +166,53 @@ export default class Feed extends Component {
                 <TouchableOpacity
                   key={i}
                   onPress={() => this.navigatetoSala(i)}
-                  style={{width: getLarguradaTela() * 0.9, margin: 20}}>
+                  style={{ width: getLarguradaTela() * 0.9, margin: 20 }}
+                >
                   <Text
                     style={{
                       fontWeight: 'bold',
                       textDecorationLine: 'underline',
                       marginBottom: 20,
-                    }}>
+                    }}
+                  >
                     Sala {this.state.numberOfRooms[i]}
                   </Text>
                   <Sensor
                     nome={consts.nomesSensores.porta}
-                    valor={this.state.salas[this.state.numberOfRooms[i]].porta}>
+                    valor={this.state.salas[this.state.numberOfRooms[i]].porta}
+                  >
                     {' '}
                   </Sensor>
                   <Sensor
                     nome={consts.nomesSensores.temperatura}
                     valor={
                       this.state.salas[this.state.numberOfRooms[i]].temperatura
-                    }>
+                    }
+                  >
                     {' '}
                   </Sensor>
                   <Sensor
                     nome={consts.nomesSensores.presenca}
                     valor={
                       this.state.salas[this.state.numberOfRooms[i]].presenca
-                    }>
+                    }
+                  >
                     {' '}
                   </Sensor>
                   <Sensor
                     nome={consts.nomesSensores.umidade}
                     valor={
                       this.state.salas[this.state.numberOfRooms[i]].umidade
-                    }>
+                    }
+                  >
                     {' '}
                   </Sensor>
                   <Sensor
                     nome={consts.nomesSensores.luminosidade}
                     valor={
                       this.state.salas[this.state.numberOfRooms[i]].luminosidade
-                    }>
+                    }
+                  >
                     {' '}
                   </Sensor>
                 </TouchableOpacity>

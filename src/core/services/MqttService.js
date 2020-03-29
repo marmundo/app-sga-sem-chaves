@@ -3,7 +3,7 @@ import init from '../libraries/index';
 init();
 
 class MqttService {
-  static local = 'mosquitto';
+  static local = 'hive';
   static conf_mqtt = {
     mosquitto: {
       url: 'test.mosquitto.org',
@@ -30,6 +30,7 @@ class MqttService {
       port: 8000,
       username: '',
       password: '',
+      path: '/mqtt',
     },
   };
 
@@ -52,7 +53,7 @@ class MqttService {
     this.client = new Messaging.Client(
       'broker.mqttdashboard.com',
       8000,
-      clientId,
+      clientId
     );
     this.client.onMessageArrived = this.onMessageArrived;
 
@@ -106,7 +107,7 @@ class MqttService {
   };
 
   onTopic = (message) => {
-    const {payloadString, topic} = message;
+    const { payloadString, topic } = message;
     topicoArray = topic.split('/');
 
     update = {
@@ -117,7 +118,7 @@ class MqttService {
     return this.updateSala(update);
   };
 
-  onFailure = ({errorMessage}) => {
+  onFailure = ({ errorMessage }) => {
     console.info('Erro' + errorMessage);
     erro =
       'Erro: ' +
@@ -144,14 +145,14 @@ class MqttService {
           onPress: () =>
             this.connectClient(
               this.onSuccessHandler,
-              this.onConnectionLostHandler,
+              this.onConnectionLostHandler
             ),
         },
       ],
 
       {
         cancelable: false,
-      },
+      }
     );
   };
 
