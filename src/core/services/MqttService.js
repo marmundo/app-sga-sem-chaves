@@ -1,4 +1,5 @@
 import init from '../libraries/index';
+import { Alert } from 'react-native';
 
 init();
 
@@ -47,7 +48,9 @@ class MqttService {
   constructor() {
     console.log(this);
 
-    let clientId = 'mdm';
+    let clientId =
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
 
     // this.client = new Paho.MQTT.Client(MqttService.conf_mqtt[MqttService.local].url, MqttService.conf_mqtt[MqttService.local].port, MqttService.conf_mqtt[MqttService.local].path, clientId)
     this.client = new Messaging.Client(
@@ -85,37 +88,25 @@ class MqttService {
       this.client.disconnect();
     }
     this.client.connect({
-      timeout: 10,
+      timeout: 3,
       onSuccess: () => {
         this.isConnected = true;
 
         onSuccessHandler();
       },
 
-      useSSL: false,
+      // useSSL: false,
 
       onFailure: this.onFailure,
 
       // reconnect: true,
 
-      keepAliveInterval: 20,
+      keepAliveInterval: 600,
 
-      cleanSession: true,
+      cleanSession: false,
       // userName: MqttService.conf_mqtt[MqttService.local].username,
       // password: MqttService.conf_mqtt[MqttService.local].password,
     });
-  };
-
-  onTopic = (message) => {
-    const { payloadString, topic } = message;
-    topicoArray = topic.split('/');
-
-    update = {
-      salaM: topicoArray[2],
-      sensorM: topicoArray[3],
-      valor: payloadString,
-    };
-    return this.updateSala(update);
   };
 
   onFailure = ({ errorMessage }) => {
@@ -138,7 +129,6 @@ class MqttService {
     Alert.alert(
       'Could not connect to MQTT',
       erro,
-
       [
         {
           text: 'TRY AGAIN',
@@ -159,6 +149,10 @@ class MqttService {
   onMessageArrived = (message) => {
     // const { payloadString, topic } = message;
     this.callbacks['ssc/sensor/#'](message);
+  };
+
+  isConnected = () => {
+    return this.client.isConnected;
   };
 
   publishMessage = (topic, message) => {
