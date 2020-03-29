@@ -82,20 +82,30 @@ export default class Feed extends Component {
     //Se a porta aberta quando recebe
     this.verificarPortaAbertaDepoisDas22EAntesDas07(1);
 
-    MqttService.connectClient(
-      this.mqttSuccessHandler,
-      this.mqttConnectionLostHandler
-    );
+    if (!MqttService.isConnected) {
+      MqttService.connectClient(
+        this.mqttSuccessHandler,
+        this.mqttConnectionLostHandler
+      );
+    }
   }
 
   mqttConnectionLostHandler = () => {
     this.setState({
       isConnected: false,
     });
+    // Alert.alert('Conexao perdida');
+    if (!MqttService.isConnected) {
+      MqttService.connectClient(
+        this.mqttSuccessHandler,
+        this.mqttConnectionLostHandler
+      );
+    }
   };
 
   mqttSuccessHandler = () => {
     console.info('connected to mqtt');
+    Alert.alert('connected to mqtt');
 
     MqttService.subscribe(this.state.topic, this.onTopic);
 
@@ -105,10 +115,6 @@ export default class Feed extends Component {
   };
 
   onTopic = (message) => {
-    console.log('Mensagem: ', message);
-    console.log('Topic: ', message._getDestinationName());
-    console.log('Payload: ', message._getPayloadString());
-
     payloadString = message._getPayloadString();
     topic = message._getDestinationName();
 
