@@ -48,7 +48,7 @@ var websocketclient = {
       cleanSession: cleanSession,
       useSSL: ssl,
       onSuccess: this.onConnect,
-      onFailure: this.onFail,
+      onFailure: this.onFail
     };
 
     if (username.length > 0) {
@@ -115,7 +115,7 @@ var websocketclient = {
     //        console.log("onMessageArrived:" + message.payloadString + " qos: " + message.qos);
 
     var subscription = websocketclient.getSubscriptionForTopic(
-      message.destinationName,
+      message.destinationName
     );
 
     var messageObj = {
@@ -125,7 +125,7 @@ var websocketclient = {
       payload: message.payloadString,
       timestamp: moment(),
       subscriptionId: subscription.id,
-      color: websocketclient.getColorForSubscription(subscription.id),
+      color: websocketclient.getColorForSubscription(subscription.id)
     };
 
     console.log(messageObj);
@@ -161,32 +161,32 @@ var websocketclient = {
       return false;
     }
 
-    if (_.find(this.subscriptions, {topic: topic})) {
+    if (_.find(this.subscriptions, { topic: topic })) {
       websocketclient.render.showError(
-        'You are already subscribed to this topic',
+        'You are already subscribed to this topic'
       );
       return false;
     }
 
-    this.client.subscribe(topic, {qos: qosNr});
+    this.client.subscribe(topic, { qos: qosNr });
     if (color.length < 1) {
       color = '999999';
     }
 
-    var subscription = {topic: topic, qos: qosNr, color: color};
+    var subscription = { topic: topic, qos: qosNr, color: color };
     subscription.id = websocketclient.render.subscription(subscription);
     this.subscriptions.push(subscription);
     return true;
   },
 
   unsubscribe: function(id) {
-    var subs = _.find(websocketclient.subscriptions, {id: id});
+    var subs = _.find(websocketclient.subscriptions, { id: id });
     this.client.unsubscribe(subs.topic);
     websocketclient.subscriptions = _.filter(
       websocketclient.subscriptions,
       function(item) {
         return item.id != id;
-      },
+      }
     );
 
     websocketclient.render.removeSubscriptionsMessages(id);
@@ -229,7 +229,7 @@ var websocketclient = {
         return '99999';
       }
 
-      var sub = _.find(this.subscriptions, {id: id});
+      var sub = _.find(this.subscriptions, { id: id });
       if (!sub) {
         return '999999';
       } else {
@@ -334,7 +334,7 @@ var websocketclient = {
           '</div>' +
           '       </div>' +
           '   </div>' +
-          '</li>',
+          '</li>'
       );
       return largest;
     },
@@ -369,7 +369,7 @@ var websocketclient = {
 
     removeSubscriptionsMessages: function(id) {
       websocketclient.messages = _.filter(websocketclient.messages, function(
-        item,
+        item
       ) {
         return item.subscriptionId != id;
       });
@@ -382,6 +382,6 @@ var websocketclient = {
 
     clearSubscriptions: function() {
       $('#innerEdit').empty();
-    },
-  },
+    }
+  }
 };
