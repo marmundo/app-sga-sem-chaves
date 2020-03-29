@@ -5,7 +5,7 @@ import init from '../libraries/index';
 init();
 
 class MqttService {
-  static local = 'mosquitto';
+  static brokerName = 'mosquitto';
   static conf_mqtt = {
     mosquitto: {
       url: 'test.mosquitto.org',
@@ -53,9 +53,9 @@ class MqttService {
       Math.random().toString(36).substring(2, 15);
 
     this.client = new Paho.MQTT.Client(
-      MqttService.conf_mqtt[MqttService.local].url,
-      MqttService.conf_mqtt[MqttService.local].port,
-      MqttService.conf_mqtt[MqttService.local].path,
+      MqttService.conf_mqtt[MqttService.brokerName].url,
+      MqttService.conf_mqtt[MqttService.brokerName].port,
+      MqttService.conf_mqtt[MqttService.brokerName].path,
       clientId
     );
 
@@ -80,7 +80,10 @@ class MqttService {
 
       onConnectionLostHandler();
     };
-    if (MqttService.local === 'ifrn' || MqttService.local === 'hive') {
+    if (
+      MqttService.brokerName === 'ifrn' ||
+      MqttService.brokerName === 'hive'
+    ) {
       useSSL = true;
     } else {
       useSSL = false;
@@ -96,7 +99,7 @@ class MqttService {
         onSuccessHandler();
       },
 
-      useSSL: false,
+      // useSSL: false,
 
       onFailure: this.onFailure,
 
@@ -105,8 +108,8 @@ class MqttService {
       keepAliveInterval: 20,
 
       cleanSession: true,
-      // userName: MqttService.conf_mqtt[MqttService.local].username,
-      // password: MqttService.conf_mqtt[MqttService.local].password,
+      // userName: MqttService.conf_mqtt[MqttService.brokerName].username,
+      // password: MqttService.conf_mqtt[MqttService.brokerName].password,
     });
   };
 
