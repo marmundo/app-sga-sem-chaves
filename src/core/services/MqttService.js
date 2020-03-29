@@ -5,7 +5,7 @@ import init from '../libraries/index';
 init();
 
 class MqttService {
-  static brokerName = 'mosquitto';
+  static brokerName = 'hive';
   static conf_mqtt = {
     mosquitto: {
       url: 'test.mosquitto.org',
@@ -32,6 +32,7 @@ class MqttService {
       port: 8000,
       username: '',
       password: '',
+      path: '/mqtt',
     },
   };
 
