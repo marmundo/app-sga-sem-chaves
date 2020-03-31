@@ -2,8 +2,18 @@ import moment from 'moment';
 import storeconfig from '../../store/storeconfig';
 import { Alert } from 'react-native';
 import { consts } from '../libraries/Commons';
+import NotifService from '../services/NotifService';
 
 const store = storeconfig();
+
+onNotif = (notif) => {
+  // console.log(notif);
+  Alert.alert(notif.title, notif.message);
+};
+
+showLocalNotification = (message) => {
+  this.notif.localNotif(message);
+};
 
 export const verificarPortaAbertaDepoisDas22EAntesDas07 = (numeroPorta) => {
   console.log('Verifica');
@@ -16,9 +26,10 @@ export const verificarPortaAbertaDepoisDas22EAntesDas07 = (numeroPorta) => {
 
   aberta = consts.aberta;
   console.log(consts.aberta);
+  notif = new NotifService(this.onNotif.bind(this));
 
   if (salas[numeroPorta][consts.porta] == aberta && verificaAntesDasSete) {
-    // this.showLocalNotification('Porta aberta');
-    Alert.alert(consts.portaAberta);
+    console.log(notif);
+    showLocalNotification('PORTA ABERTA');
   }
 };

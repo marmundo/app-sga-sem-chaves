@@ -28,17 +28,8 @@ class Feed extends Component {
       roomsLenght: 0,
     };
 
-    this.notif = new NotifService(
-      this.onRegister.bind(this),
-      this.onNotif.bind(this)
-    );
+    this.notif = new NotifService(this.onNotif.bind(this));
     this.navigatetoSala = this.navigatetoSala.bind(this);
-  }
-
-  onRegister(token) {
-    Alert.alert('Registered !', JSON.stringify(token));
-    // console.log(token);
-    this.setState({ registerToken: token.token, gcmRegistered: true });
   }
 
   onNotif(notif) {
@@ -46,9 +37,9 @@ class Feed extends Component {
     Alert.alert(notif.title, notif.message);
   }
 
-  handlePerm(perms) {
-    Alert.alert('Permissions', JSON.stringify(perms));
-  }
+  // handlePerm(perms) {
+  //   Alert.alert('Permissions', JSON.stringify(perms));
+  // }
 
   showLocalNotification(message) {
     this.notif.localNotif(message);
