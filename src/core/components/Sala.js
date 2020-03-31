@@ -1,40 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setSala } from '../../store/actions/sala';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { CardView } from 'react-native-simple-card-view';
 import Sensor from '../components/Sensor';
 import { getLarguradaTela, consts } from '../libraries/Commons';
 import MqttService from '../services/MqttService';
 
-export default class Sala extends Component {
+class Sala extends Component {
   constructor(props) {
     super(props);
     const { params } = props.route;
-    const {
-      sala,
-      porta,
-      temperatura,
-      presenca,
-      umidade,
-      luminosidade,
-    } = params;
-    this.state = {
-      sala,
-      porta,
-      temperatura,
-      presenca,
-      umidade,
-      luminosidade,
-    };
+    this.sala = params.sala;
   }
+
+  setSala = (sala) => {
+    this.props.onSetSala(sala);
+  };
 
   handlePresPorta = async () => {
     porta = consts.porta;
-    (await this.state.porta) === consts.aberta
-      ? this.setState({ porta: consts.fechada })
-      : this.setState({ porta: consts.aberta });
+    newSala = { ...this.props.salas };
+    if (this.props.salas[this.sala].porta === consts.aberta) {
+      newSala[this.sala].porta = consts.fechada;
+      await this.setSala(newSala);
+    } else {
+      newSala[this.sala].porta = consts.aberta;
+      await this.setSala(newSala);
+    }
+
     MqttService.publishMessage(
-      consts.topicRaiz + this.state.sala + '/' + porta,
-      this.state.porta
+      consts.topicRaiz + this.sala + '/' + porta,
+      this.props.salas[this.sala].porta
     );
   };
 
@@ -49,34 +46,37 @@ export default class Sala extends Component {
               marginBottom: 20,
             }}
           >
-            Sala {this.state.sala}
+            Sala {this.sala}
           </Text>
           <TouchableOpacity onPress={this.handlePresPorta}>
-            <Sensor nome={consts.nomesSensores.porta} valor={this.state.porta}>
+            <Sensor
+              nome={consts.nomesSensores.porta}
+              valor={this.props.salas[this.sala].porta}
+            >
               {' '}
             </Sensor>
           </TouchableOpacity>
           <Sensor
             nome={consts.nomesSensores.temperatura}
-            valor={this.state.temperatura}
+            valor={this.props.salas[this.sala].temperatura}
           >
             {' '}
           </Sensor>
           <Sensor
             nome={consts.nomesSensores.presenca}
-            valor={this.state.presenca}
+            valor={this.props.salas[this.sala].presenca}
           >
             {' '}
           </Sensor>
           <Sensor
             nome={consts.nomesSensores.umidade}
-            valor={this.state.umidade}
+            valor={this.props.salas[this.sala].umidade}
           >
             {' '}
           </Sensor>
           <Sensor
             nome={consts.nomesSensores.luminosidade}
-            valor={this.state.luminosidade}
+            valor={this.props.salas[this.sala].luminosidade}
           >
             {' '}
           </Sensor>
@@ -85,6 +85,20 @@ export default class Sala extends Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetSala: (sala) => dispatch(setSala(sala)),
+  };
+};
+
+const mapStateToProps = ({ sala }) => {
+  return {
+    salas: sala.salas,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sala);
 
 const styles = StyleSheet.create({
   container: {

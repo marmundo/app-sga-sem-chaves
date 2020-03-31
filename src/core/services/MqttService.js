@@ -46,8 +46,6 @@ class MqttService {
   }
 
   constructor() {
-    console.log(this);
-
     let clientId =
       Math.random().toString(36).substring(2, 15) +
       Math.random().toString(36).substring(2, 15);
@@ -156,7 +154,7 @@ class MqttService {
   };
 
   publishMessage = (topic, message) => {
-    console.log('Publicando: ', topic, message);
+    console.info('Publicando: ', topic, message);
     if (!this.isConnected) {
       console.info('not connected');
 

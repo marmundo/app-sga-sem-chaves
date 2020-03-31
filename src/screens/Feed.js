@@ -44,12 +44,12 @@ class Feed extends Component {
 
   onRegister(token) {
     Alert.alert('Registered !', JSON.stringify(token));
-    console.log(token);
+    // console.log(token);
     this.setState({ registerToken: token.token, gcmRegistered: true });
   }
 
   onNotif(notif) {
-    console.log(notif);
+    // console.log(notif);
     Alert.alert(notif.title, notif.message);
   }
 
@@ -80,7 +80,7 @@ class Feed extends Component {
     this.setState({ roomsLenght });
 
     //Se a porta aberta quando recebe
-    this.verificarPortaAbertaDepoisDas22EAntesDas07(1);
+    // this.verificarPortaAbertaDepoisDas22EAntesDas07('1');
 
     if (!MqttService.isConnected) {
       MqttService.connectClient(
@@ -105,7 +105,7 @@ class Feed extends Component {
 
   mqttSuccessHandler = () => {
     console.info('connected to mqtt');
-    Alert.alert('connected to mqtt');
+    Alert.alert('Conectado ao Servidor');
 
     MqttService.subscribe(this.state.topic, this.onTopic);
 
@@ -118,25 +118,19 @@ class Feed extends Component {
     payloadString = message._getPayloadString();
     topic = message._getDestinationName();
 
-    // const {payloadString, topic} = message;
-
     topicoArray = topic.split('/');
 
     salaM = topicoArray[2];
     sensorM = topicoArray[3];
     valor = payloadString;
 
-    this.setState((prevState) => {
-      let salas = Object.assign({}, prevState.salas);
-      if (salas[salaM] == undefined) {
-        sensor_valor = {};
-        sensor_valor[sensorM] = valor;
-        salas[salaM] = sensor_valor;
-      }
-      salas[salaM][sensorM] = valor;
-      this.showLocalNotification(`Sala ${salaM}== ${salas[salaM][sensorM]}`);
-      return { salas };
-    });
+    newSala = { ...this.props.salas };
+    newSala[salaM][sensorM] = valor;
+    this.setSala(newSala);
+
+    this.showLocalNotification(
+      `Sala ${salaM}\n\n ${sensorM.toUpperCase()} ${newSala[salaM][sensorM]}`
+    );
   };
 
   setSala = (sala) => {
@@ -146,12 +140,6 @@ class Feed extends Component {
   navigatetoSala = (i) => {
     params = {
       sala: this.state.numberOfRooms[i],
-      porta: this.props.salas[this.state.numberOfRooms[i]].porta,
-      temperatura: this.props.salas[this.state.numberOfRooms[i]].temperatura,
-      presenca: this.props.salas[this.state.numberOfRooms[i]].presenca,
-      //TODO: Mudar nome da variavel
-      umidade: this.props.salas[this.state.numberOfRooms[i]].umidade,
-      luminosidade: this.props.salas[this.state.numberOfRooms[i]].luminosidade,
     };
     this.props.navigation.navigate('Sala', params);
   };
