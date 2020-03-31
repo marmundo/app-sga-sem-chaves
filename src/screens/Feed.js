@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setSala } from '../store/actions/sala';
 import {
   Alert,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
-  Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import { CardView } from 'react-native-simple-card-view';
 import MqttService from '../core/services/MqttService';
 import NotifService from '../core/services/NotifService';
 import appConfig from './app.json';
@@ -16,21 +16,21 @@ import Sensor from '../core/components/Sensor';
 import moment from 'moment';
 import { getLarguradaTela, consts } from '../core/libraries/Commons';
 
-export default class Feed extends Component {
+class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
       senderId: appConfig.senderID,
       isConnected: false,
       topic: consts.topic,
-      salas: {
-        1: {
-          porta: 'Aberta',
-        },
-        21: {},
-        22: {},
-        23: {},
-      },
+      // salas: {
+      //   1: {
+      //     porta: 'Aberta',
+      //   },
+      //   21: {},
+      //   22: {},
+      //   23: {},
+      // },
       numberOfRooms: '',
       roomsLenght: 0,
     };
@@ -68,14 +68,14 @@ export default class Feed extends Component {
     var verificaAntesDasSete = now.isBefore(sete);
     var verificaDepoisVinteDuas = now.isAfter(vinteduas);
     var verificaHora = verificaAntesDasSete && verificaDepoisVinteDuas;
-    if (this.state.salas[numeroPorta].porta == 'aberta' && verificaHora) {
+    if (this.props.salas[numeroPorta].porta == 'aberta' && verificaHora) {
       this.showLocalNotification('Porta aberta');
     }
   }
 
   componentDidMount() {
-    (numberOfRooms = Object.keys(this.state.salas)),
-      (roomsLenght = numberOfRooms.length);
+    numberOfRooms = Object.keys(this.props.salas);
+    roomsLenght = numberOfRooms.length;
     this.setState({ numberOfRooms });
     this.setState({ roomsLenght });
 
@@ -139,15 +139,19 @@ export default class Feed extends Component {
     });
   };
 
+  setSala = (sala) => {
+    this.props.onSetSala(sala);
+  };
+
   navigatetoSala = (i) => {
     params = {
       sala: this.state.numberOfRooms[i],
-      porta: this.state.salas[this.state.numberOfRooms[i]].porta,
-      temperatura: this.state.salas[this.state.numberOfRooms[i]].temperatura,
-      presenca: this.state.salas[this.state.numberOfRooms[i]].presenca,
+      porta: this.props.salas[this.state.numberOfRooms[i]].porta,
+      temperatura: this.props.salas[this.state.numberOfRooms[i]].temperatura,
+      presenca: this.props.salas[this.state.numberOfRooms[i]].presenca,
       //TODO: Mudar nome da variavel
-      umidade: this.state.salas[this.state.numberOfRooms[i]].umidade,
-      luminosidade: this.state.salas[this.state.numberOfRooms[i]].luminosidade,
+      umidade: this.props.salas[this.state.numberOfRooms[i]].umidade,
+      luminosidade: this.props.salas[this.state.numberOfRooms[i]].luminosidade,
     };
     this.props.navigation.navigate('Sala', params);
   };
@@ -185,14 +189,14 @@ export default class Feed extends Component {
                   </Text>
                   <Sensor
                     nome={consts.nomesSensores.porta}
-                    valor={this.state.salas[this.state.numberOfRooms[i]].porta}
+                    valor={this.props.salas[this.state.numberOfRooms[i]].porta}
                   >
                     {' '}
                   </Sensor>
                   <Sensor
                     nome={consts.nomesSensores.temperatura}
                     valor={
-                      this.state.salas[this.state.numberOfRooms[i]].temperatura
+                      this.props.salas[this.state.numberOfRooms[i]].temperatura
                     }
                   >
                     {' '}
@@ -200,7 +204,7 @@ export default class Feed extends Component {
                   <Sensor
                     nome={consts.nomesSensores.presenca}
                     valor={
-                      this.state.salas[this.state.numberOfRooms[i]].presenca
+                      this.props.salas[this.state.numberOfRooms[i]].presenca
                     }
                   >
                     {' '}
@@ -208,7 +212,7 @@ export default class Feed extends Component {
                   <Sensor
                     nome={consts.nomesSensores.umidade}
                     valor={
-                      this.state.salas[this.state.numberOfRooms[i]].umidade
+                      this.props.salas[this.state.numberOfRooms[i]].umidade
                     }
                   >
                     {' '}
@@ -216,7 +220,7 @@ export default class Feed extends Component {
                   <Sensor
                     nome={consts.nomesSensores.luminosidade}
                     valor={
-                      this.state.salas[this.state.numberOfRooms[i]].luminosidade
+                      this.props.salas[this.state.numberOfRooms[i]].luminosidade
                     }
                   >
                     {' '}
@@ -231,6 +235,21 @@ export default class Feed extends Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetSala: (sala) => dispatch(setSala(sala)),
+  };
+};
+
+const mapStateToProps = ({ sala }) => {
+  return {
+    salas: sala.salas,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feed);
+
 const styles = StyleSheet.create({
   button: {
     borderWidth: 1,
