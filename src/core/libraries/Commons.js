@@ -11,6 +11,7 @@ const consts = {
   topic: 'ssc/sensor/#',
   porta: 'porta',
   topicRaiz: 'ssc/sensor/',
+  portaAberta: 'Porta Aberta',
   nomesSensores: {
     porta: 'Porta',
     temperatura: 'Temperatura',

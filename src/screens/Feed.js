@@ -13,8 +13,9 @@ import MqttService from '../core/services/MqttService';
 import NotifService from '../core/services/NotifService';
 import appConfig from './app.json';
 import Sensor from '../core/components/Sensor';
-import moment from 'moment';
+
 import { getLarguradaTela, consts } from '../core/libraries/Commons';
+import { verificarPortaAbertaDepoisDas22EAntesDas07 } from '../core/services/Verifica';
 
 class Feed extends Component {
   constructor(props) {
@@ -23,14 +24,6 @@ class Feed extends Component {
       senderId: appConfig.senderID,
       isConnected: false,
       topic: consts.topic,
-      // salas: {
-      //   1: {
-      //     porta: 'Aberta',
-      //   },
-      //   21: {},
-      //   22: {},
-      //   23: {},
-      // },
       numberOfRooms: '',
       roomsLenght: 0,
     };
@@ -61,18 +54,6 @@ class Feed extends Component {
     this.notif.localNotif(message);
   }
 
-  verificarPortaAbertaDepoisDas22EAntesDas07(numeroPorta) {
-    var vinteduas = moment('10:00pm', 'h:mma');
-    var sete = moment('7:00am', 'h:mma');
-    var now = moment(new Date());
-    var verificaAntesDasSete = now.isBefore(sete);
-    var verificaDepoisVinteDuas = now.isAfter(vinteduas);
-    var verificaHora = verificaAntesDasSete && verificaDepoisVinteDuas;
-    if (this.props.salas[numeroPorta].porta == 'aberta' && verificaHora) {
-      this.showLocalNotification('Porta aberta');
-    }
-  }
-
   componentDidMount() {
     numberOfRooms = Object.keys(this.props.salas);
     roomsLenght = numberOfRooms.length;
@@ -80,7 +61,7 @@ class Feed extends Component {
     this.setState({ roomsLenght });
 
     //Se a porta aberta quando recebe
-    // this.verificarPortaAbertaDepoisDas22EAntesDas07('1');
+    verificarPortaAbertaDepoisDas22EAntesDas07('1');
 
     if (!MqttService.isConnected) {
       MqttService.connectClient(
