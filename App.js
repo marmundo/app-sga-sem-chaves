@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -7,9 +7,14 @@ import Login from './src/screens/Login';
 import Feed from './src/screens/Feed';
 import Sala from './src/core/components/Sala';
 
+import SplashScreen from 'react-native-splash-screen';
+
 const Stack = createStackNavigator();
 
 function App() {
+  useEffect(() => {
+    SplashScreen.hide();
+  });
   return (
     <NavigationContainer>
       <Stack.Navigator>
