@@ -1,4 +1,4 @@
-<!-- <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.mqtttutorial">
+<!-- <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="br.edu.ifrn.geatic">
 
  <!-<uses-permission android:name="android.permission.INTERNET" /> -->
 
@@ -22,7 +22,7 @@
 <!-- </manifest> -->
 
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.mqtttutorial">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="br.edu.ifrn.geatic">
 
   <uses-permission android:name="android.permission.INTERNET" />
 

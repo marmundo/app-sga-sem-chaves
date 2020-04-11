@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* MqttTutorialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MqttTutorialTests.m */; };
+		00E356F31AD99517003FC87E /* SGASemChavesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SGASemChavesTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -15,12 +15,12 @@
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* MqttTutorialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MqttTutorialTests.m */; };
-		46EF763B1ED53F186592D01D /* libPods-MqttTutorial-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D411BF3A46424AA6E3248D25 /* libPods-MqttTutorial-tvOS.a */; };
-		4F1416B9A2C7CE57A8902BAE /* libPods-MqttTutorial-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4065E02344A5CDC976D9AE22 /* libPods-MqttTutorial-tvOSTests.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* SGASemChavesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SGASemChavesTests.m */; };
+		46EF763B1ED53F186592D01D /* libPods-SGASemChaves-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D411BF3A46424AA6E3248D25 /* libPods-SGASemChaves-tvOS.a */; };
+		4F1416B9A2C7CE57A8902BAE /* libPods-SGASemChaves-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4065E02344A5CDC976D9AE22 /* libPods-SGASemChaves-tvOSTests.a */; };
 		9CDBA28B244252C00056A281 /* logo-sgasemchaves-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDBA28A244252C00056A281 /* logo-sgasemchaves-1024.png */; };
-		AD1BFBF05D73774BF0A75945 /* libPods-MqttTutorialTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9164C29EE5BACA1D50EB20 /* libPods-MqttTutorialTests.a */; };
-		B4F0A6876134CDB391F0BFDD /* libPods-MqttTutorial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0158187BEA0C108AC5BE27 /* libPods-MqttTutorial.a */; };
+		AD1BFBF05D73774BF0A75945 /* libPods-SGASemChavesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9164C29EE5BACA1D50EB20 /* libPods-SGASemChavesTests.a */; };
+		B4F0A6876134CDB391F0BFDD /* libPods-SGASemChaves.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0158187BEA0C108AC5BE27 /* libPods-SGASemChaves.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,44 +29,44 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = MqttTutorial;
+			remoteInfo = SGASemChaves;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "MqttTutorial-tvOS";
+			remoteInfo = "SGASemChaves-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* MqttTutorialTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MqttTutorialTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* SGASemChavesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SGASemChavesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* MqttTutorialTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MqttTutorialTests.m; sourceTree = "<group>"; };
-		1084BE10DF183E76121A77EE /* Pods-MqttTutorial-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MqttTutorial-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MqttTutorial-tvOS/Pods-MqttTutorial-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* MqttTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MqttTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MqttTutorial/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MqttTutorial/AppDelegate.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* SGASemChavesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGASemChavesTests.m; sourceTree = "<group>"; };
+		1084BE10DF183E76121A77EE /* Pods-SGASemChaves-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGASemChaves-tvOS.release.xcconfig"; path = "Target Support Files/Pods-SGASemChaves-tvOS/Pods-SGASemChaves-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* SGASemChaves.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SGASemChaves.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SGASemChaves/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SGASemChaves/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MqttTutorial/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MqttTutorial/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MqttTutorial/main.m; sourceTree = "<group>"; };
-		2CF709BC4B22F06DFC15BCC1 /* Pods-MqttTutorialTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MqttTutorialTests.debug.xcconfig"; path = "Target Support Files/Pods-MqttTutorialTests/Pods-MqttTutorialTests.debug.xcconfig"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* MqttTutorial-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MqttTutorial-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* MqttTutorial-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MqttTutorial-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F0158187BEA0C108AC5BE27 /* libPods-MqttTutorial.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MqttTutorial.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3322149636FA57A99A3D608C /* Pods-MqttTutorialTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MqttTutorialTests.release.xcconfig"; path = "Target Support Files/Pods-MqttTutorialTests/Pods-MqttTutorialTests.release.xcconfig"; sourceTree = "<group>"; };
-		4065E02344A5CDC976D9AE22 /* libPods-MqttTutorial-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MqttTutorial-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D3A6DCAA69B548D5996192D /* Pods-MqttTutorial-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MqttTutorial-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-MqttTutorial-tvOSTests/Pods-MqttTutorial-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		7F8AA5391BFCE570D11A6942 /* Pods-MqttTutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MqttTutorial.debug.xcconfig"; path = "Target Support Files/Pods-MqttTutorial/Pods-MqttTutorial.debug.xcconfig"; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SGASemChaves/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SGASemChaves/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SGASemChaves/main.m; sourceTree = "<group>"; };
+		2CF709BC4B22F06DFC15BCC1 /* Pods-SGASemChavesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGASemChavesTests.debug.xcconfig"; path = "Target Support Files/Pods-SGASemChavesTests/Pods-SGASemChavesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* SGASemChaves-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SGASemChaves-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* SGASemChaves-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SGASemChaves-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F0158187BEA0C108AC5BE27 /* libPods-SGASemChaves.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGASemChaves.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3322149636FA57A99A3D608C /* Pods-SGASemChavesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGASemChavesTests.release.xcconfig"; path = "Target Support Files/Pods-SGASemChavesTests/Pods-SGASemChavesTests.release.xcconfig"; sourceTree = "<group>"; };
+		4065E02344A5CDC976D9AE22 /* libPods-SGASemChaves-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGASemChaves-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D3A6DCAA69B548D5996192D /* Pods-SGASemChaves-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGASemChaves-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SGASemChaves-tvOSTests/Pods-SGASemChaves-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		7F8AA5391BFCE570D11A6942 /* Pods-SGASemChaves.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGASemChaves.debug.xcconfig"; path = "Target Support Files/Pods-SGASemChaves/Pods-SGASemChaves.debug.xcconfig"; sourceTree = "<group>"; };
 		9CDBA28A244252C00056A281 /* logo-sgasemchaves-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-sgasemchaves-1024.png"; path = "AppIcon.appiconset/logo-sgasemchaves-1024.png"; sourceTree = "<group>"; };
-		A2784D1F1FCC5922AF63E09C /* Pods-MqttTutorial-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MqttTutorial-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MqttTutorial-tvOS/Pods-MqttTutorial-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		AC9164C29EE5BACA1D50EB20 /* libPods-MqttTutorialTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MqttTutorialTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B41E91E0D94E26E35C70528E /* Pods-MqttTutorial-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MqttTutorial-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MqttTutorial-tvOSTests/Pods-MqttTutorial-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D3886C78147D0607B8B7B1F3 /* Pods-MqttTutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MqttTutorial.release.xcconfig"; path = "Target Support Files/Pods-MqttTutorial/Pods-MqttTutorial.release.xcconfig"; sourceTree = "<group>"; };
-		D411BF3A46424AA6E3248D25 /* libPods-MqttTutorial-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MqttTutorial-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2784D1F1FCC5922AF63E09C /* Pods-SGASemChaves-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGASemChaves-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-SGASemChaves-tvOS/Pods-SGASemChaves-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		AC9164C29EE5BACA1D50EB20 /* libPods-SGASemChavesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGASemChavesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B41E91E0D94E26E35C70528E /* Pods-SGASemChaves-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGASemChaves-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-SGASemChaves-tvOSTests/Pods-SGASemChaves-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D3886C78147D0607B8B7B1F3 /* Pods-SGASemChaves.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SGASemChaves.release.xcconfig"; path = "Target Support Files/Pods-SGASemChaves/Pods-SGASemChaves.release.xcconfig"; sourceTree = "<group>"; };
+		D411BF3A46424AA6E3248D25 /* libPods-SGASemChaves-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SGASemChaves-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -76,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD1BFBF05D73774BF0A75945 /* libPods-MqttTutorialTests.a in Frameworks */,
+				AD1BFBF05D73774BF0A75945 /* libPods-SGASemChavesTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4F0A6876134CDB391F0BFDD /* libPods-MqttTutorial.a in Frameworks */,
+				B4F0A6876134CDB391F0BFDD /* libPods-SGASemChaves.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46EF763B1ED53F186592D01D /* libPods-MqttTutorial-tvOS.a in Frameworks */,
+				46EF763B1ED53F186592D01D /* libPods-SGASemChaves-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,20 +100,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F1416B9A2C7CE57A8902BAE /* libPods-MqttTutorial-tvOSTests.a in Frameworks */,
+				4F1416B9A2C7CE57A8902BAE /* libPods-SGASemChaves-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* MqttTutorialTests */ = {
+		00E356EF1AD99517003FC87E /* SGASemChavesTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* MqttTutorialTests.m */,
+				00E356F21AD99517003FC87E /* SGASemChavesTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = MqttTutorialTests;
+			path = SGASemChavesTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -124,7 +124,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* MqttTutorial */ = {
+		13B07FAE1A68108700A75B9A /* SGASemChaves */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -136,7 +136,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = MqttTutorial;
+			name = SGASemChaves;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -144,10 +144,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				2F0158187BEA0C108AC5BE27 /* libPods-MqttTutorial.a */,
-				D411BF3A46424AA6E3248D25 /* libPods-MqttTutorial-tvOS.a */,
-				4065E02344A5CDC976D9AE22 /* libPods-MqttTutorial-tvOSTests.a */,
-				AC9164C29EE5BACA1D50EB20 /* libPods-MqttTutorialTests.a */,
+				2F0158187BEA0C108AC5BE27 /* libPods-SGASemChaves.a */,
+				D411BF3A46424AA6E3248D25 /* libPods-SGASemChaves-tvOS.a */,
+				4065E02344A5CDC976D9AE22 /* libPods-SGASemChaves-tvOSTests.a */,
+				AC9164C29EE5BACA1D50EB20 /* libPods-SGASemChavesTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,9 +162,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* MqttTutorial */,
+				13B07FAE1A68108700A75B9A /* SGASemChaves */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* MqttTutorialTests */,
+				00E356EF1AD99517003FC87E /* SGASemChavesTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D94426B4EA0119EC74C80DE7 /* Pods */,
@@ -177,10 +177,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* MqttTutorial.app */,
-				00E356EE1AD99517003FC87E /* MqttTutorialTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* MqttTutorial-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* MqttTutorial-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* SGASemChaves.app */,
+				00E356EE1AD99517003FC87E /* SGASemChavesTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* SGASemChaves-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* SGASemChaves-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,14 +188,14 @@
 		D94426B4EA0119EC74C80DE7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7F8AA5391BFCE570D11A6942 /* Pods-MqttTutorial.debug.xcconfig */,
-				D3886C78147D0607B8B7B1F3 /* Pods-MqttTutorial.release.xcconfig */,
-				A2784D1F1FCC5922AF63E09C /* Pods-MqttTutorial-tvOS.debug.xcconfig */,
-				1084BE10DF183E76121A77EE /* Pods-MqttTutorial-tvOS.release.xcconfig */,
-				B41E91E0D94E26E35C70528E /* Pods-MqttTutorial-tvOSTests.debug.xcconfig */,
-				7D3A6DCAA69B548D5996192D /* Pods-MqttTutorial-tvOSTests.release.xcconfig */,
-				2CF709BC4B22F06DFC15BCC1 /* Pods-MqttTutorialTests.debug.xcconfig */,
-				3322149636FA57A99A3D608C /* Pods-MqttTutorialTests.release.xcconfig */,
+				7F8AA5391BFCE570D11A6942 /* Pods-SGASemChaves.debug.xcconfig */,
+				D3886C78147D0607B8B7B1F3 /* Pods-SGASemChaves.release.xcconfig */,
+				A2784D1F1FCC5922AF63E09C /* Pods-SGASemChaves-tvOS.debug.xcconfig */,
+				1084BE10DF183E76121A77EE /* Pods-SGASemChaves-tvOS.release.xcconfig */,
+				B41E91E0D94E26E35C70528E /* Pods-SGASemChaves-tvOSTests.debug.xcconfig */,
+				7D3A6DCAA69B548D5996192D /* Pods-SGASemChaves-tvOSTests.release.xcconfig */,
+				2CF709BC4B22F06DFC15BCC1 /* Pods-SGASemChavesTests.debug.xcconfig */,
+				3322149636FA57A99A3D608C /* Pods-SGASemChavesTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -203,9 +203,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* MqttTutorialTests */ = {
+		00E356ED1AD99517003FC87E /* SGASemChavesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MqttTutorialTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SGASemChavesTests" */;
 			buildPhases = (
 				AD875FFB293F833617B50A46 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -217,14 +217,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = MqttTutorialTests;
-			productName = MqttTutorialTests;
-			productReference = 00E356EE1AD99517003FC87E /* MqttTutorialTests.xctest */;
+			name = SGASemChavesTests;
+			productName = SGASemChavesTests;
+			productReference = 00E356EE1AD99517003FC87E /* SGASemChavesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* MqttTutorial */ = {
+		13B07F861A680F5B00A75B9A /* SGASemChaves */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MqttTutorial" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SGASemChaves" */;
 			buildPhases = (
 				305A550DD7CC0E2616C563B6 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -237,14 +237,14 @@
 			);
 			dependencies = (
 			);
-			name = MqttTutorial;
-			productName = MqttTutorial;
-			productReference = 13B07F961A680F5B00A75B9A /* MqttTutorial.app */;
+			name = SGASemChaves;
+			productName = SGASemChaves;
+			productReference = 13B07F961A680F5B00A75B9A /* SGASemChaves.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* MqttTutorial-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* SGASemChaves-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MqttTutorial-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SGASemChaves-tvOS" */;
 			buildPhases = (
 				1EACDC437DDFABA4C18A7FCB /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -257,14 +257,14 @@
 			);
 			dependencies = (
 			);
-			name = "MqttTutorial-tvOS";
-			productName = "MqttTutorial-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* MqttTutorial-tvOS.app */;
+			name = "SGASemChaves-tvOS";
+			productName = "SGASemChaves-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* SGASemChaves-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* MqttTutorial-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* SGASemChaves-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MqttTutorial-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SGASemChaves-tvOSTests" */;
 			buildPhases = (
 				3B3C7F491DD9E44AD1B7877A /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -276,9 +276,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "MqttTutorial-tvOSTests";
-			productName = "MqttTutorial-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* MqttTutorial-tvOSTests.xctest */;
+			name = "SGASemChaves-tvOSTests";
+			productName = "SGASemChaves-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* SGASemChaves-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -309,7 +309,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MqttTutorial" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SGASemChaves" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -322,10 +322,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* MqttTutorial */,
-				00E356ED1AD99517003FC87E /* MqttTutorialTests */,
-				2D02E47A1E0B4A5D006451C7 /* MqttTutorial-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* MqttTutorial-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* SGASemChaves */,
+				00E356ED1AD99517003FC87E /* SGASemChavesTests */,
+				2D02E47A1E0B4A5D006451C7 /* SGASemChaves-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* SGASemChaves-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -395,7 +395,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MqttTutorial-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SGASemChaves-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -431,7 +431,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MqttTutorial-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SGASemChaves-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -453,7 +453,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MqttTutorial-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SGASemChaves-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -475,7 +475,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MqttTutorialTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SGASemChavesTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -527,7 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* MqttTutorialTests.m in Sources */,
+				00E356F31AD99517003FC87E /* SGASemChavesTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,7 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* MqttTutorialTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* SGASemChavesTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,12 +562,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* MqttTutorial */;
+			target = 13B07F861A680F5B00A75B9A /* SGASemChaves */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* MqttTutorial-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* SGASemChaves-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -579,7 +579,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = MqttTutorial;
+			path = SGASemChaves;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -587,7 +587,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CF709BC4B22F06DFC15BCC1 /* Pods-MqttTutorialTests.debug.xcconfig */;
+			baseConfigurationReference = 2CF709BC4B22F06DFC15BCC1 /* Pods-SGASemChavesTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = VX5JM9YXWL;
@@ -595,7 +595,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = MqttTutorialTests/Info.plist;
+				INFOPLIST_FILE = SGASemChavesTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -605,18 +605,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MqttTutorial.app/MqttTutorial";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SGASemChaves.app/SGASemChaves";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3322149636FA57A99A3D608C /* Pods-MqttTutorialTests.release.xcconfig */;
+			baseConfigurationReference = 3322149636FA57A99A3D608C /* Pods-SGASemChavesTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = VX5JM9YXWL;
-				INFOPLIST_FILE = MqttTutorialTests/Info.plist;
+				INFOPLIST_FILE = SGASemChavesTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -626,19 +626,19 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MqttTutorial.app/MqttTutorial";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SGASemChaves.app/SGASemChaves";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F8AA5391BFCE570D11A6942 /* Pods-MqttTutorial.debug.xcconfig */;
+			baseConfigurationReference = 7F8AA5391BFCE570D11A6942 /* Pods-SGASemChaves.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = VX5JM9YXWL;
-				INFOPLIST_FILE = MqttTutorial/Info.plist;
+				INFOPLIST_FILE = SGASemChaves/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -646,19 +646,19 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = MqttTutorial;
+				PRODUCT_NAME = SGASemChaves;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3886C78147D0607B8B7B1F3 /* Pods-MqttTutorial.release.xcconfig */;
+			baseConfigurationReference = D3886C78147D0607B8B7B1F3 /* Pods-SGASemChaves.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VX5JM9YXWL;
-				INFOPLIST_FILE = MqttTutorial/Info.plist;
+				INFOPLIST_FILE = SGASemChaves/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -666,14 +666,14 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = MqttTutorial;
+				PRODUCT_NAME = SGASemChaves;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2784D1F1FCC5922AF63E09C /* Pods-MqttTutorial-tvOS.debug.xcconfig */;
+			baseConfigurationReference = A2784D1F1FCC5922AF63E09C /* Pods-SGASemChaves-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -684,14 +684,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "MqttTutorial-tvOS/Info.plist";
+				INFOPLIST_FILE = "SGASemChaves-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MqttTutorial-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.SGASemChaves-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -701,7 +701,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1084BE10DF183E76121A77EE /* Pods-MqttTutorial-tvOS.release.xcconfig */;
+			baseConfigurationReference = 1084BE10DF183E76121A77EE /* Pods-SGASemChaves-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -712,14 +712,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "MqttTutorial-tvOS/Info.plist";
+				INFOPLIST_FILE = "SGASemChaves-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MqttTutorial-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.SGASemChaves-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -729,7 +729,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B41E91E0D94E26E35C70528E /* Pods-MqttTutorial-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = B41E91E0D94E26E35C70528E /* Pods-SGASemChaves-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -739,24 +739,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "MqttTutorial-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "SGASemChaves-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MqttTutorial-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.SGASemChaves-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MqttTutorial-tvOS.app/MqttTutorial-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SGASemChaves-tvOS.app/SGASemChaves-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7D3A6DCAA69B548D5996192D /* Pods-MqttTutorial-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 7D3A6DCAA69B548D5996192D /* Pods-SGASemChaves-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -766,17 +766,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "MqttTutorial-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "SGASemChaves-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MqttTutorial-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.SGASemChaves-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MqttTutorial-tvOS.app/MqttTutorial-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SGASemChaves-tvOS.app/SGASemChaves-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -885,7 +885,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MqttTutorialTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "SGASemChavesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -894,7 +894,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MqttTutorial" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SGASemChaves" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -903,7 +903,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MqttTutorial-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SGASemChaves-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -912,7 +912,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MqttTutorial-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "SGASemChaves-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -921,7 +921,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MqttTutorial" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SGASemChaves" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

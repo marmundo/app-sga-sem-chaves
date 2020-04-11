@@ -1,8 +1,12 @@
-package com.mqtttutorial;
+package br.edu.ifrn.geatic;
+
+import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
-import org.devio.rn.splashscreen.SplashScreen; 
-import android.os.Bundle; 
+
+import org.devio.rn.splashscreen.SplashScreen;
+
+
 public class MainActivity extends ReactActivity {
 
   /**
@@ -11,12 +15,12 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "MqttTutorial";
+    return "SGASemChaves";
   }
 
   @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SplashScreen.show(this);  // here
+      SplashScreen.show(this);
         super.onCreate(savedInstanceState);
     }
 }

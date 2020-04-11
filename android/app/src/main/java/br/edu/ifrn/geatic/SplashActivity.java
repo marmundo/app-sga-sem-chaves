@@ -1,4 +1,4 @@
-package com.mqtttutorial; // make sure this is your package name
+package br.edu.ifrn.geatic;
 
 import android.content.Intent;
 import android.os.Bundle;

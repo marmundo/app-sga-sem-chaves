@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'MqttTutorial' do
-  # Pods for MqttTutorial
+target 'SGASemChaves' do
+  # Pods for SGASemChaves
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -36,7 +36,9 @@ target 'MqttTutorial' do
 
 
 
-  target 'MqttTutorialTests' do
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
+  target 'SGASemChavesTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -44,10 +46,10 @@ target 'MqttTutorial' do
   use_native_modules!
 end
 
-target 'MqttTutorial-tvOS' do
-  # Pods for MqttTutorial-tvOS
+target 'SGASemChaves-tvOS' do
+  # Pods for SGASemChaves-tvOS
 
-  target 'MqttTutorial-tvOSTests' do
+  target 'SGASemChaves-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
