@@ -1,16 +1,16 @@
 import PushNotification from 'react-native-push-notification';
 
 export default class NotifService {
-  constructor(onRegister, onNotification) {
-    this.configure(onRegister, onNotification);
-
+  constructor(onNotification) {
+    // this.configure(onRegister, onNotification);
+    this.configure(onNotification);
     this.lastId = 0;
   }
 
-  configure(onRegister, onNotification, gcm = '') {
+  configure(onNotification, gcm = '') {
     PushNotification.configure({
       // (optional) Called when Token is generated (iOS and Android)
-      onRegister: onRegister, //this._onRegister.bind(this),
+      // onRegister: onRegister, //this._onRegister.bind(this),
 
       // (required) Called when a remote or local notification is opened or received
       onNotification: onNotification, //this._onNotification,

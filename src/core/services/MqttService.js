@@ -1,11 +1,10 @@
-import { Alert } from 'react-native';
-
 import init from '../libraries/index';
+import { Alert } from 'react-native';
 
 init();
 
 class MqttService {
-  static brokerName = 'hive';
+  static local = 'hive';
   static conf_mqtt = {
     mosquitto: {
       url: 'test.mosquitto.org',
@@ -47,19 +46,16 @@ class MqttService {
   }
 
   constructor() {
-    console.log(this);
-
     let clientId =
       Math.random().toString(36).substring(2, 15) +
       Math.random().toString(36).substring(2, 15);
 
-    this.client = new Paho.MQTT.Client(
-      MqttService.conf_mqtt[MqttService.brokerName].url,
-      MqttService.conf_mqtt[MqttService.brokerName].port,
-      MqttService.conf_mqtt[MqttService.brokerName].path,
+    // this.client = new Paho.MQTT.Client(MqttService.conf_mqtt[MqttService.local].url, MqttService.conf_mqtt[MqttService.local].port, MqttService.conf_mqtt[MqttService.local].path, clientId)
+    this.client = new Messaging.Client(
+      'broker.mqttdashboard.com',
+      8000,
       clientId
     );
-
     this.client.onMessageArrived = this.onMessageArrived;
 
     this.callbacks = {};
@@ -81,19 +77,16 @@ class MqttService {
 
       onConnectionLostHandler();
     };
-    if (
-      MqttService.brokerName === 'ifrn' ||
-      MqttService.brokerName === 'hive'
-    ) {
+    if (MqttService.local === 'ifrn' || MqttService.local === 'hive') {
       useSSL = true;
     } else {
       useSSL = false;
     }
-    if (this.client && this.client.isConnected()) {
+    if (this.client && this.client.isConnected) {
       this.client.disconnect();
     }
     this.client.connect({
-      timeout: 10,
+      timeout: 3,
       onSuccess: () => {
         this.isConnected = true;
 
@@ -104,27 +97,14 @@ class MqttService {
 
       onFailure: this.onFailure,
 
-      reconnect: true,
+      // reconnect: true,
 
-      keepAliveInterval: 20,
+      keepAliveInterval: 600,
 
-      cleanSession: true,
-      // userName: MqttService.conf_mqtt[MqttService.brokerName].username,
-      // password: MqttService.conf_mqtt[MqttService.brokerName].password,
+      cleanSession: false,
+      // userName: MqttService.conf_mqtt[MqttService.local].username,
+      // password: MqttService.conf_mqtt[MqttService.local].password,
     });
-  };
-
-  onTopic = (message) => {
-    const { payloadString, topic } = message;
-
-    topicoArray = topic.split('/');
-
-    update = {
-      salaM: topicoArray[2],
-      sensorM: topicoArray[3],
-      valor: payloadString,
-    };
-    return this.updateSala(update);
   };
 
   onFailure = ({ errorMessage }) => {
@@ -147,7 +127,6 @@ class MqttService {
     Alert.alert(
       'Could not connect to MQTT',
       erro,
-
       [
         {
           text: 'TRY AGAIN',
@@ -170,15 +149,24 @@ class MqttService {
     this.callbacks['ssc/sensor/#'](message);
   };
 
+  isConnected = () => {
+    return this.client.isConnected;
+  };
+
   publishMessage = (topic, message) => {
-    console.log('Publicando: ', topic, message);
+    console.info('Publicando: ', topic, message);
     if (!this.isConnected) {
       console.info('not connected');
 
       return;
     }
 
-    this.client.publish(topic, message);
+    // this.client.publish(topic, message);
+    var message = new Messaging.Message(message);
+    message.destinationName = topic;
+    message.qos = 0;
+    message.retained = false;
+    this.client.send(message);
   };
 
   subscribe = (topic, callback) => {

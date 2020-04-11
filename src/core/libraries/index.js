@@ -1,6 +1,6 @@
-Object.defineProperty(exports, '__esModule', { value: true });
+Object.defineProperty(exports, '__esModule', {value: true});
 
-require('./mqtt');
+require('./mqttws31');
 
 // Set up an in-memory alternative to global localStorage
 

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setSala } from '../store/actions/sala';
 import {
   Alert,
   SafeAreaView,
@@ -11,94 +13,71 @@ import MqttService from '../core/services/MqttService';
 import NotifService from '../core/services/NotifService';
 import appConfig from './app.json';
 import Sensor from '../core/components/Sensor';
-import moment from 'moment';
-import { getLarguradaTela, consts } from '../core/libraries/Commons';
 
-export default class Feed extends Component {
+import { getLarguradaTela, consts } from '../core/libraries/Commons';
+import { verificarPortaAbertaDepoisDas22EAntesDas07 } from '../core/services/Verifica';
+
+class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
       senderId: appConfig.senderID,
       isConnected: false,
       topic: consts.topic,
-      salas: {
-        1: {
-          porta: 'Aberta',
-        },
-        21: {},
-        22: {},
-        23: {},
-      },
       numberOfRooms: '',
       roomsLenght: 0,
     };
 
-    this.notif = new NotifService(
-      this.onRegister.bind(this),
-      this.onNotif.bind(this)
-    );
+    this.notif = new NotifService(this.onNotif.bind(this));
     this.navigatetoSala = this.navigatetoSala.bind(this);
   }
 
-  onRegister(token) {
-    Alert.alert('Registered !', JSON.stringify(token));
-    console.log(token);
-    this.setState({ registerToken: token.token, gcmRegistered: true });
-  }
-
   onNotif(notif) {
-    console.log(notif);
+    // console.log(notif);
     Alert.alert(notif.title, notif.message);
   }
 
-  handlePerm(perms) {
-    Alert.alert('Permissions', JSON.stringify(perms));
-  }
+  // handlePerm(perms) {
+  //   Alert.alert('Permissions', JSON.stringify(perms));
+  // }
 
   showLocalNotification(message) {
     this.notif.localNotif(message);
   }
 
-  verificarPortaAbertaDepoisDas22EAntesDas07(numeroPorta) {
-    var vinteduas = moment('10:00pm', 'h:mma');
-    var sete = moment('7:00am', 'h:mma');
-    var now = moment(new Date());
-    var verificaAntesDasSete = now.isBefore(sete);
-    var verificaDepoisVinteDuas = now.isAfter(vinteduas);
-    var verificaHora = verificaAntesDasSete && verificaDepoisVinteDuas;
-    if (this.state.salas[numeroPorta].porta == 'aberta' && verificaHora) {
-      this.showLocalNotification('Porta aberta');
-    }
-  }
-
   componentDidMount() {
-    (numberOfRooms = Object.keys(this.state.salas)),
-      (roomsLenght = numberOfRooms.length);
+    numberOfRooms = Object.keys(this.props.salas);
+    roomsLenght = numberOfRooms.length;
     this.setState({ numberOfRooms });
     this.setState({ roomsLenght });
 
     //Se a porta aberta quando recebe
-    this.verificarPortaAbertaDepoisDas22EAntesDas07(1);
+    verificarPortaAbertaDepoisDas22EAntesDas07('1');
 
-    MqttService.connectClient(
-      this.mqttSuccessHandler,
-      this.mqttConnectionLostHandler
-    );
+    if (!MqttService.isConnected) {
+      MqttService.connectClient(
+        this.mqttSuccessHandler,
+        this.mqttConnectionLostHandler
+      );
+    }
   }
 
   mqttConnectionLostHandler = () => {
-    console.log('Conexão Perdida');
     this.setState({
       isConnected: false,
     });
-    MqttService.connectClient(
-      this.mqttSuccessHandler,
-      this.mqttConnectionLostHandler
-    );
+    // Alert.alert('Conexao perdida');
+    if (!MqttService.isConnected) {
+      MqttService.connectClient(
+        this.mqttSuccessHandler,
+        this.mqttConnectionLostHandler
+      );
+    }
   };
 
   mqttSuccessHandler = () => {
-    console.log('connected to mqtt');
+    console.info('connected to mqtt');
+    Alert.alert('Conectado ao Servidor');
 
     MqttService.subscribe(this.state.topic, this.onTopic);
 
@@ -108,7 +87,8 @@ export default class Feed extends Component {
   };
 
   onTopic = (message) => {
-    const { payloadString, topic } = message;
+    payloadString = message._getPayloadString();
+    topic = message._getDestinationName();
 
     topicoArray = topic.split('/');
 
@@ -116,28 +96,22 @@ export default class Feed extends Component {
     sensorM = topicoArray[3];
     valor = payloadString;
 
-    this.setState((prevState) => {
-      let salas = Object.assign({}, prevState.salas);
-      if (salas[salaM] == undefined) {
-        sensor_valor = {};
-        sensor_valor[sensorM] = valor;
-        salas[salaM] = sensor_valor;
-      }
-      salas[salaM][sensorM] = valor;
-      this.showLocalNotification(`Sala ${salaM}== ${salas[salaM][sensorM]}`);
-      return { salas };
-    });
+    newSala = { ...this.props.salas };
+    newSala[salaM][sensorM] = valor;
+    this.setSala(newSala);
+
+    this.showLocalNotification(
+      `Sala ${salaM}\n\n ${sensorM.toUpperCase()} ${newSala[salaM][sensorM]}`
+    );
+  };
+
+  setSala = (sala) => {
+    this.props.onSetSala(sala);
   };
 
   navigatetoSala = (i) => {
     params = {
       sala: this.state.numberOfRooms[i],
-      porta: this.state.salas[this.state.numberOfRooms[i]].porta,
-      temperatura: this.state.salas[this.state.numberOfRooms[i]].temperatura,
-      presenca: this.state.salas[this.state.numberOfRooms[i]].presenca,
-      //TODO: Mudar nome da variavel
-      umidade: this.state.salas[this.state.numberOfRooms[i]].umidade,
-      luminosidade: this.state.salas[this.state.numberOfRooms[i]].luminosidade,
     };
     this.props.navigation.navigate('Sala', params);
   };
@@ -162,10 +136,7 @@ export default class Feed extends Component {
                 <TouchableOpacity
                   key={i}
                   onPress={() => this.navigatetoSala(i)}
-                  style={{
-                    width: getLarguradaTela() * 0.9,
-                    margin: 20,
-                  }}
+                  style={{ width: getLarguradaTela() * 0.9, margin: 20 }}
                 >
                   <Text
                     style={{
@@ -178,14 +149,14 @@ export default class Feed extends Component {
                   </Text>
                   <Sensor
                     nome={consts.nomesSensores.porta}
-                    valor={this.state.salas[this.state.numberOfRooms[i]].porta}
+                    valor={this.props.salas[this.state.numberOfRooms[i]].porta}
                   >
                     {' '}
                   </Sensor>
                   <Sensor
                     nome={consts.nomesSensores.temperatura}
                     valor={
-                      this.state.salas[this.state.numberOfRooms[i]].temperatura
+                      this.props.salas[this.state.numberOfRooms[i]].temperatura
                     }
                   >
                     {' '}
@@ -193,7 +164,7 @@ export default class Feed extends Component {
                   <Sensor
                     nome={consts.nomesSensores.presenca}
                     valor={
-                      this.state.salas[this.state.numberOfRooms[i]].presenca
+                      this.props.salas[this.state.numberOfRooms[i]].presenca
                     }
                   >
                     {' '}
@@ -201,7 +172,7 @@ export default class Feed extends Component {
                   <Sensor
                     nome={consts.nomesSensores.umidade}
                     valor={
-                      this.state.salas[this.state.numberOfRooms[i]].umidade
+                      this.props.salas[this.state.numberOfRooms[i]].umidade
                     }
                   >
                     {' '}
@@ -209,7 +180,7 @@ export default class Feed extends Component {
                   <Sensor
                     nome={consts.nomesSensores.luminosidade}
                     valor={
-                      this.state.salas[this.state.numberOfRooms[i]].luminosidade
+                      this.props.salas[this.state.numberOfRooms[i]].luminosidade
                     }
                   >
                     {' '}
@@ -224,6 +195,21 @@ export default class Feed extends Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetSala: (sala) => dispatch(setSala(sala)),
+  };
+};
+
+const mapStateToProps = ({ sala }) => {
+  return {
+    salas: sala.salas,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feed);
+
 const styles = StyleSheet.create({
   button: {
     borderWidth: 1,
