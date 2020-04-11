@@ -18,6 +18,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* MqttTutorialTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MqttTutorialTests.m */; };
 		46EF763B1ED53F186592D01D /* libPods-MqttTutorial-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D411BF3A46424AA6E3248D25 /* libPods-MqttTutorial-tvOS.a */; };
 		4F1416B9A2C7CE57A8902BAE /* libPods-MqttTutorial-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4065E02344A5CDC976D9AE22 /* libPods-MqttTutorial-tvOSTests.a */; };
+		9CDBA28B244252C00056A281 /* logo-sgasemchaves-1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CDBA28A244252C00056A281 /* logo-sgasemchaves-1024.png */; };
 		AD1BFBF05D73774BF0A75945 /* libPods-MqttTutorialTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9164C29EE5BACA1D50EB20 /* libPods-MqttTutorialTests.a */; };
 		B4F0A6876134CDB391F0BFDD /* libPods-MqttTutorial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0158187BEA0C108AC5BE27 /* libPods-MqttTutorial.a */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		4065E02344A5CDC976D9AE22 /* libPods-MqttTutorial-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MqttTutorial-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D3A6DCAA69B548D5996192D /* Pods-MqttTutorial-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MqttTutorial-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-MqttTutorial-tvOSTests/Pods-MqttTutorial-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		7F8AA5391BFCE570D11A6942 /* Pods-MqttTutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MqttTutorial.debug.xcconfig"; path = "Target Support Files/Pods-MqttTutorial/Pods-MqttTutorial.debug.xcconfig"; sourceTree = "<group>"; };
+		9CDBA28A244252C00056A281 /* logo-sgasemchaves-1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-sgasemchaves-1024.png"; path = "AppIcon.appiconset/logo-sgasemchaves-1024.png"; sourceTree = "<group>"; };
 		A2784D1F1FCC5922AF63E09C /* Pods-MqttTutorial-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MqttTutorial-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MqttTutorial-tvOS/Pods-MqttTutorial-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		AC9164C29EE5BACA1D50EB20 /* libPods-MqttTutorialTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MqttTutorialTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B41E91E0D94E26E35C70528E /* Pods-MqttTutorial-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MqttTutorial-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MqttTutorial-tvOSTests/Pods-MqttTutorial-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				9CDBA28A244252C00056A281 /* logo-sgasemchaves-1024.png */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				9CDBA28B244252C00056A281 /* logo-sgasemchaves-1024.png in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
