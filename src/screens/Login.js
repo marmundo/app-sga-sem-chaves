@@ -26,6 +26,7 @@ class Login extends Component {
         { error: 'Preencha usuário e senha para continuar!' },
         () => false
       );
+      Alert.alert('Erro', this.state.error);
     } else {
       try {
         //Codigo de https://github.com/Rocketseat/blog-adonis-reactjs-react-native-airbnb-app/blob/master/src/pages/signIn/index.js
@@ -34,10 +35,6 @@ class Login extends Component {
           password: this.state.password,
         });
         const userToken = response.data.token;
-        console.log(userToken);
-        // await AsyncStorage.setItem('@AirBnbApp:token', response.data.token);
-
-        // TODO: Configurar o react navigation
         this.props.navigation.navigate('Feed');
       } catch (_err) {
         console.tron.log(_err);
@@ -66,6 +63,7 @@ class Login extends Component {
           secureTextEntry={true}
           value={this.state.password}
           onChangeText={(password) => this.setState({ password })}
+          onSubmitEditing={this.login}
         />
         <TouchableOpacity onPress={this.login} style={styles.buttom}>
           <Text style={styles.buttomText}>Login</Text>
