@@ -6,11 +6,14 @@ const getLarguradaTela = () => {
 };
 
 const consts = {
+  on: 'ON',
+  off: 'OFF',
   aberta: 'Aberta',
   fechada: 'Fechada',
   topic: 'ssc/sensor/#',
-  porta: 'porta',
   topicRaiz: 'ssc/sensor/',
+  porta: 'porta',
+  luminosidade: 'luminosidade',
   portaAberta: 'Porta Aberta',
   nomesSensores: {
     porta: 'Porta',
@@ -18,6 +21,13 @@ const consts = {
     presenca: 'Presença',
     luminosidade: 'Luminosidade',
     umidade: 'Umidade',
+  },
+  nomesIcones: {
+    porta: 'archway',
+    temperatura: 'thermometer-quarter',
+    presenca: 'bell',
+    luminosidade: 'lightbulb',
+    umidade: 'tint',
   },
 };
 
