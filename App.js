@@ -30,9 +30,7 @@ function App() {
         <Stack.Screen
           name="Sala"
           component={Sala}
-          options={{
-            title: 'Sala',
-          }}
+          options={({ route }) => ({ title: route.params.nomeSala })}
         />
       </Stack.Navigator>
     </NavigationContainer>

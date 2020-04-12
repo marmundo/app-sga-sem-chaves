@@ -30,11 +30,11 @@ class Login extends Component {
     } else {
       try {
         //Codigo de https://github.com/Rocketseat/blog-adonis-reactjs-react-native-airbnb-app/blob/master/src/pages/signIn/index.js
-        const response = await api.post('/', {
-          username: this.state.username,
-          password: this.state.password,
-        });
-        const userToken = response.data.token;
+        // const response = await api.post('/', {
+        //   username: this.state.username,
+        //   password: this.state.password,
+        // });
+        // const userToken = response.data.token;
         this.props.navigation.navigate('Feed');
       } catch (_err) {
         console.tron.log(_err);

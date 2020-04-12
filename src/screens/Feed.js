@@ -112,6 +112,7 @@ class Feed extends Component {
   navigatetoSala = (i) => {
     params = {
       sala: this.state.numberOfRooms[i],
+      nomeSala: 'Sala ' + this.state.numberOfRooms[i],
     };
     this.props.navigation.navigate('Sala', params);
   };
@@ -127,69 +128,75 @@ class Feed extends Component {
         }}
       >
         <ScrollView>
-          {// Generates cards dinamically based on number of rooms
-          this.state.roomsLenght > 0 ? (
-            Array(this.state.roomsLenght)
-              .fill()
-              .map((_, i) => i)
-              .map((i) => (
-                <TouchableOpacity
-                  key={i}
-                  onPress={() => this.navigatetoSala(i)}
-                  style={{ width: getLarguradaTela() * 0.9, margin: 20 }}
-                >
-                  <Text
-                    style={{
-                      fontWeight: 'bold',
-                      textDecorationLine: 'underline',
-                      marginBottom: 20,
-                    }}
+          {
+            // Generates cards dinamically based on number of rooms
+            this.state.roomsLenght > 0 ? (
+              Array(this.state.roomsLenght)
+                .fill()
+                .map((_, i) => i)
+                .map((i) => (
+                  <TouchableOpacity
+                    key={i}
+                    onPress={() => this.navigatetoSala(i)}
+                    style={{ width: getLarguradaTela() * 0.9, margin: 20 }}
                   >
-                    Sala {this.state.numberOfRooms[i]}
-                  </Text>
-                  <Sensor
-                    nome={consts.nomesSensores.porta}
-                    valor={this.props.salas[this.state.numberOfRooms[i]].porta}
-                  >
-                    {' '}
-                  </Sensor>
-                  <Sensor
-                    nome={consts.nomesSensores.temperatura}
-                    valor={
-                      this.props.salas[this.state.numberOfRooms[i]].temperatura
-                    }
-                  >
-                    {' '}
-                  </Sensor>
-                  <Sensor
-                    nome={consts.nomesSensores.presenca}
-                    valor={
-                      this.props.salas[this.state.numberOfRooms[i]].presenca
-                    }
-                  >
-                    {' '}
-                  </Sensor>
-                  <Sensor
-                    nome={consts.nomesSensores.umidade}
-                    valor={
-                      this.props.salas[this.state.numberOfRooms[i]].umidade
-                    }
-                  >
-                    {' '}
-                  </Sensor>
-                  <Sensor
-                    nome={consts.nomesSensores.luminosidade}
-                    valor={
-                      this.props.salas[this.state.numberOfRooms[i]].luminosidade
-                    }
-                  >
-                    {' '}
-                  </Sensor>
-                </TouchableOpacity>
-              ))
-          ) : (
-            <Text></Text>
-          )}
+                    <Text
+                      style={{
+                        fontWeight: 'bold',
+                        textDecorationLine: 'underline',
+                        marginBottom: 20,
+                      }}
+                    >
+                      Sala {this.state.numberOfRooms[i]}
+                    </Text>
+                    <Sensor
+                      nome={consts.nomesSensores.porta}
+                      valor={
+                        this.props.salas[this.state.numberOfRooms[i]].porta
+                      }
+                    >
+                      {' '}
+                    </Sensor>
+                    <Sensor
+                      nome={consts.nomesSensores.temperatura}
+                      valor={
+                        this.props.salas[this.state.numberOfRooms[i]]
+                          .temperatura
+                      }
+                    >
+                      {' '}
+                    </Sensor>
+                    <Sensor
+                      nome={consts.nomesSensores.presenca}
+                      valor={
+                        this.props.salas[this.state.numberOfRooms[i]].presenca
+                      }
+                    >
+                      {' '}
+                    </Sensor>
+                    <Sensor
+                      nome={consts.nomesSensores.umidade}
+                      valor={
+                        this.props.salas[this.state.numberOfRooms[i]].umidade
+                      }
+                    >
+                      {' '}
+                    </Sensor>
+                    <Sensor
+                      nome={consts.nomesSensores.luminosidade}
+                      valor={
+                        this.props.salas[this.state.numberOfRooms[i]]
+                          .luminosidade
+                      }
+                    >
+                      {' '}
+                    </Sensor>
+                  </TouchableOpacity>
+                ))
+            ) : (
+              <Text></Text>
+            )
+          }
         </ScrollView>
       </SafeAreaView>
     );

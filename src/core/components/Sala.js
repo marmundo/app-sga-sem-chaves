@@ -14,6 +14,14 @@ class Sala extends Component {
     this.sala = params.sala;
   }
 
+  static navigationOptions = ({ navigation }) => {
+    const { state } = navigation;
+    console.log(state);
+    return {
+      title: `${sala}`,
+    };
+  };
+
   setSala = (sala) => {
     this.props.onSetSala(sala);
   };
