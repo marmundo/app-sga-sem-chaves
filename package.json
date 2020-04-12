@@ -6,7 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "ios": "react-native run-ios --simulator='iPhone 11'",
-    "android": "react-native run-android --reset-cache",
+    "android": "react-native run-android --reset-cache --stacktrace ",
     "ios-big": "react-native run-ios --reset-cache",
     "build-android": "cd android && ./gradlew assembleRelease --warning-mode all"
   },
