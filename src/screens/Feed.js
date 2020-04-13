@@ -6,17 +6,18 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
+  // Text
   TouchableOpacity,
 } from 'react-native';
 import MqttService from '../core/services/MqttService';
 import NotifService from '../core/services/NotifService';
 import appConfig from './app.json';
-import Sensor from '../core/components/Sensor';
+import SalaFeed from '../core/components/SalaFeed';
 
-import { getLarguradaTela, consts } from '../core/libraries/Commons';
+import { consts } from '../core/libraries/Commons';
 import { verificarPortaAbertaDepoisDas22EAntesDas07 } from '../core/services/Verifica';
 
+import { Container, Content, Text } from 'native-base';
 class Feed extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +32,16 @@ class Feed extends Component {
     this.notif = new NotifService(this.onNotif.bind(this));
     this.navigatetoSala = this.navigatetoSala.bind(this);
   }
+
+  navigatetoSala = (i) => {
+    console.log('Sala apertada:' + i);
+    console.log('Sala ' + i);
+    params = {
+      sala: i,
+      nomeSala: 'Sala ' + i,
+    };
+    this.props.navigation.navigate('Sala', params);
+  };
 
   onNotif(notif) {
     // console.log(notif);
@@ -47,6 +58,7 @@ class Feed extends Component {
 
   componentDidMount() {
     numberOfRooms = Object.keys(this.props.salas);
+    console.log('Numero de salas ' + numberOfRooms);
     roomsLenght = numberOfRooms.length;
     this.setState({ numberOfRooms });
     this.setState({ roomsLenght });
@@ -109,96 +121,32 @@ class Feed extends Component {
     this.props.onSetSala(sala);
   };
 
-  navigatetoSala = (i) => {
-    params = {
-      sala: this.state.numberOfRooms[i],
-      nomeSala: 'Sala ' + this.state.numberOfRooms[i],
-    };
-    this.props.navigation.navigate('Sala', params);
-  };
-
   render() {
     return (
-      <SafeAreaView
-        style={{
-          flex: 1,
-          marginTop: 10,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <ScrollView>
-          {
-            // Generates cards dinamically based on number of rooms
-            this.state.roomsLenght > 0 ? (
-              Array(this.state.roomsLenght)
-                .fill()
-                .map((_, i) => i)
-                .map((i) => (
-                  <TouchableOpacity
-                    key={i}
-                    onPress={() => this.navigatetoSala(i)}
-                    style={{ width: getLarguradaTela() * 0.9, margin: 20 }}
-                  >
-                    <Text
-                      style={{
-                        fontWeight: 'bold',
-                        textDecorationLine: 'underline',
-                        marginBottom: 20,
-                      }}
-                    >
-                      Sala {this.state.numberOfRooms[i]}
-                    </Text>
-                    <Sensor
-                      nome={consts.nomesSensores.porta}
-                      valor={
-                        this.props.salas[this.state.numberOfRooms[i]].porta
-                      }
-                    >
-                      {' '}
-                    </Sensor>
-                    <Sensor
-                      nome={consts.nomesSensores.temperatura}
-                      valor={
-                        this.props.salas[this.state.numberOfRooms[i]]
-                          .temperatura
-                      }
-                    >
-                      {' '}
-                    </Sensor>
-                    <Sensor
-                      nome={consts.nomesSensores.presenca}
-                      valor={
-                        this.props.salas[this.state.numberOfRooms[i]].presenca
-                      }
-                    >
-                      {' '}
-                    </Sensor>
-                    <Sensor
-                      nome={consts.nomesSensores.umidade}
-                      valor={
-                        this.props.salas[this.state.numberOfRooms[i]].umidade
-                      }
-                    >
-                      {' '}
-                    </Sensor>
-                    <Sensor
-                      nome={consts.nomesSensores.luminosidade}
-                      valor={
-                        this.props.salas[this.state.numberOfRooms[i]]
-                          .luminosidade
-                      }
-                    >
-                      {' '}
-                    </Sensor>
-                  </TouchableOpacity>
-                ))
-            ) : (
-              <Text></Text>
-            )
-          }
-        </ScrollView>
-      </SafeAreaView>
+      <ScrollView>
+        <Container>
+          <Content>
+            {
+              // Generates cards dinamically based on number of rooms
+              this.state.roomsLenght > 0 ? (
+                Array(this.state.roomsLenght)
+                  .fill()
+                  .map((_, i) => i)
+                  .map((i) => (
+                    <SalaFeed
+                      onPress={this.navigatetoSala}
+                      key={i}
+                      sala={this.state.numberOfRooms[i]}
+                      // style={{ width: getLarguradaTela() * 0.9, margin: 20 }}
+                    />
+                  ))
+              ) : (
+                <Text></Text>
+              )
+            }
+          </Content>
+        </Container>
+      </ScrollView>
     );
   }
 }
@@ -217,14 +165,14 @@ const mapStateToProps = ({ sala }) => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Feed);
 
-const styles = StyleSheet.create({
-  button: {
-    borderWidth: 1,
-    borderColor: '#000000',
-    margin: 5,
-    padding: 5,
-    width: '70%',
-    backgroundColor: '#DDDDDD',
-    borderRadius: 5,
-  },
-});
+// const styles = StyleSheet.create({
+//   button: {
+//     borderWidth: 1,
+//     borderColor: '#000000',
+//     margin: 5,
+//     padding: 5,
+//     width: '70%',
+//     backgroundColor: '#DDDDDD',
+//     borderRadius: 5,
+//   },
+// });

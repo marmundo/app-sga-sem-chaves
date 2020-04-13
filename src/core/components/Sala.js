@@ -1,95 +1,98 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setSala } from '../../store/actions/sala';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { CardView } from 'react-native-simple-card-view';
+import { StyleSheet } from 'react-native';
 import Sensor from '../components/Sensor';
-import { getLarguradaTela, consts } from '../libraries/Commons';
+import { consts } from '../libraries/Commons';
 import MqttService from '../services/MqttService';
+import { Container, Content, Card, CardItem, Left } from 'native-base';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 class Sala extends Component {
   constructor(props) {
     super(props);
     const { params } = props.route;
-    this.sala = params.sala;
+    sala = params.sala;
   }
-
-  static navigationOptions = ({ navigation }) => {
-    const { state } = navigation;
-    console.log(state);
-    return {
-      title: `${sala}`,
-    };
-  };
 
   setSala = (sala) => {
     this.props.onSetSala(sala);
   };
 
+  handlePressLuz = async () => {
+    luminosidade = consts.luminosidade;
+    newSala = { ...this.props.salas };
+    if (this.props.salas[sala].luminosidade === consts.on) {
+      newSala[sala].luminosidade = consts.off;
+      await this.setSala(newSala);
+    } else {
+      newSala[sala].luminosidade = consts.on;
+      await this.setSala(newSala);
+    }
+  };
+
   handlePresPorta = async () => {
     porta = consts.porta;
     newSala = { ...this.props.salas };
-    if (this.props.salas[this.sala].porta === consts.aberta) {
-      newSala[this.sala].porta = consts.fechada;
+    if (this.props.salas[sala].porta === consts.aberta) {
+      newSala[sala].porta = consts.fechada;
       await this.setSala(newSala);
     } else {
-      newSala[this.sala].porta = consts.aberta;
+      newSala[sala].porta = consts.aberta;
       await this.setSala(newSala);
     }
 
     MqttService.publishMessage(
-      consts.topicRaiz + this.sala + '/' + porta,
-      this.props.salas[this.sala].porta
+      consts.topicRaiz + sala + '/' + porta,
+      this.props.salas[sala].porta
     );
   };
 
   render() {
     return (
-      <View style={styles.container}>
-        <CardView style={{ width: getLarguradaTela() * 0.9, margin: 20 }}>
-          <Text
-            style={{
-              fontWeight: 'bold',
-              textDecorationLine: 'underline',
-              marginBottom: 20,
-            }}
-          >
-            Sala {this.sala}
-          </Text>
-          <TouchableOpacity onPress={this.handlePresPorta}>
-            <Sensor
-              nome={consts.nomesSensores.porta}
-              valor={this.props.salas[this.sala].porta}
-            >
-              {' '}
-            </Sensor>
-          </TouchableOpacity>
-          <Sensor
-            nome={consts.nomesSensores.temperatura}
-            valor={this.props.salas[this.sala].temperatura}
-          >
-            {' '}
-          </Sensor>
-          <Sensor
-            nome={consts.nomesSensores.presenca}
-            valor={this.props.salas[this.sala].presenca}
-          >
-            {' '}
-          </Sensor>
-          <Sensor
-            nome={consts.nomesSensores.umidade}
-            valor={this.props.salas[this.sala].umidade}
-          >
-            {' '}
-          </Sensor>
-          <Sensor
-            nome={consts.nomesSensores.luminosidade}
-            valor={this.props.salas[this.sala].luminosidade}
-          >
-            {' '}
-          </Sensor>
-        </CardView>
-      </View>
+      <Container>
+        <Content>
+          <Card style={{ marginTop: 10 }}>
+            <CardItem>
+              <Left>
+                <Sensor
+                  label={consts.nomesSensores.porta}
+                  sensor={consts.nomesIcones.porta}
+                  valor={this.props.salas[sala].porta}
+                />
+                <Sensor
+                  label={consts.nomesSensores.temperatura}
+                  sensor={consts.nomesIcones.temperatura}
+                  valor={this.props.salas[sala].temperatura}
+                />
+              </Left>
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Sensor
+                  label={consts.nomesSensores.presenca}
+                  sensor={consts.nomesIcones.presenca}
+                  valor={this.props.salas[sala].presenca}
+                />
+                <Sensor
+                  label={consts.nomesSensores.umidade}
+                  sensor={consts.nomesIcones.umidade}
+                  valor={this.props.salas[sala].umidade}
+                />
+              </Left>
+            </CardItem>
+            <CardItem style={{ justifyContent: 'center' }}>
+              <TouchableWithoutFeedback onPress={() => this.handlePressLuz()}>
+                <Sensor
+                  label={consts.nomesSensores.luminosidade}
+                  sensor={consts.nomesIcones.luminosidade}
+                  valor={this.props.salas[sala].luminosidade}
+                />
+              </TouchableWithoutFeedback>
+            </CardItem>
+          </Card>
+        </Content>
+      </Container>
     );
   }
 }
