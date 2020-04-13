@@ -52,8 +52,8 @@ class Sala extends Component {
     return (
       <Container>
         <Content>
-          <Card style={{ marginTop: 10 }}>
-            <CardItem>
+          <Card>
+            <CardItem style={{ marginTop: 15 }}>
               <Left>
                 <Sensor
                   label={consts.nomesSensores.porta}
